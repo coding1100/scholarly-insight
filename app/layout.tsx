@@ -45,7 +45,8 @@ export default function RootLayout({
         />
 
 
-     
+        {/* DNS prefetch for resources loaded later */}
+        <link rel="dns-prefetch" href="https://www.googletagmanager.com" />
         
       </head>
       <body className={poppins.className} suppressHydrationWarning={true}>
@@ -58,7 +59,34 @@ export default function RootLayout({
 
         
 
-        
+        {/* GTM - delayed by 2-3 seconds after page load to improve web vitals */}
+        <Script
+          id="gtm-script"
+          strategy="lazyOnload"
+          dangerouslySetInnerHTML={{
+            __html: `
+              (function() {
+                function initGTM() {
+                  (function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+                  new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+                  j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+                  'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+                  })(window,document,'script','dataLayer','GTM-5ZHV46X');
+                }
+                
+                if (document.readyState === 'complete') {
+                  setTimeout(initGTM, 2500);
+                } else {
+                  window.addEventListener('load', function() {
+                    setTimeout(initGTM, 2500);
+                  });
+                }
+              })();
+            `,
+          }}
+        />
+
+
         {/* Client-side scripts that need pathname */}
         <ClientScripts />
       </body>
