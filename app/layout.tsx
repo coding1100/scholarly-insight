@@ -34,8 +34,19 @@ export default function RootLayout({
         )}
 
         {/* CRITICAL: Preload LCP image to eliminate resource load delay */}
-       
+        <link
+          rel="preload"
+          as="image"
+          href="/images/Hero-Group-195.webp"
+          type="image/webp"
+          fetchPriority="high"
+          imageSrcSet="/_next/image?url=%2Fimages%2FHero-Group-195.webp&w=640&q=75 1x, /_next/image?url=%2Fimages%2FHero-Group-195.webp&w=1080&q=75 2x"
+          imageSizes="(max-width: 1025px) 0px, 450px"
+        />
 
+
+        {/* DNS prefetch for resources loaded later */}
+        <link rel="dns-prefetch" href="https://www.googletagmanager.com" />
         
       </head>
       <body className={poppins.className} suppressHydrationWarning={true}>
@@ -46,14 +57,23 @@ export default function RootLayout({
          * This defers all non-critical scripts until after page is fully interactive
          */}
 
-        {/* Google Sign-In - lazy load */}
         
 
         {/* GTM - use lazyOnload instead of default to reduce main thread work */}
-        
+        <Script
+          id="gtm-script"
+          strategy="lazyOnload"
+          dangerouslySetInnerHTML={{
+            __html: `
+              (function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+              new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+              j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+              'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+              })(window,document,'script','dataLayer','GTM-5ZHV46X');
+            `,
+          }}
+        />
 
-        {/* Schema.org - lazyOnload since it's not render-blocking */}
-       
 
         {/* Client-side scripts that need pathname */}
         <ClientScripts />
