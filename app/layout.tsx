@@ -59,14 +59,19 @@ export default function RootLayout({
 
         
 
-        {/* GTM - delayed by 2-3 seconds after page load to improve web vitals */}
+        {/* GTM - Loaded only after browser is idle or user interaction to protect web vitals */}
         <Script
           id="gtm-script"
-          strategy="lazyOnload"
+          strategy="afterInteractive"
           dangerouslySetInnerHTML={{
             __html: `
               (function() {
+                var gtmLoaded = false;
+                
                 function initGTM() {
+                  if (gtmLoaded) return;
+                  gtmLoaded = true;
+                  
                   (function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
                   new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
                   j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
@@ -74,13 +79,43 @@ export default function RootLayout({
                   })(window,document,'script','dataLayer','GTM-5ZHV46X');
                 }
                 
-                if (document.readyState === 'complete') {
-                  setTimeout(initGTM, 2500);
-                } else {
-                  window.addEventListener('load', function() {
-                    setTimeout(initGTM, 2500);
-                  });
+                // Wait for page to be fully loaded
+                function waitForLoad() {
+                  if (document.readyState === 'complete') {
+                    loadGTM();
+                  } else {
+                    window.addEventListener('load', loadGTM, { once: true });
+                  }
                 }
+                
+                function loadGTM() {
+                  // Use requestIdleCallback for maximum web vitals protection
+                  if ('requestIdleCallback' in window) {
+                    requestIdleCallback(function() {
+                      setTimeout(initGTM, 5000); // 5 second delay after idle
+                    }, { timeout: 8000 }); // Fallback after 8 seconds max
+                  } else {
+                    // Fallback for browsers without requestIdleCallback
+                    setTimeout(initGTM, 8000);
+                  }
+                }
+                
+                // Also load on first user interaction as backup
+                var interactionEvents = ['scroll', 'mousedown', 'touchstart', 'keydown'];
+                var interactionHandler = function() {
+                  if (!gtmLoaded) {
+                    setTimeout(initGTM, 3000);
+                    interactionEvents.forEach(function(event) {
+                      window.removeEventListener(event, interactionHandler);
+                    });
+                  }
+                };
+                
+                interactionEvents.forEach(function(event) {
+                  window.addEventListener(event, interactionHandler, { once: true, passive: true });
+                });
+                
+                waitForLoad();
               })();
             `,
           }}
