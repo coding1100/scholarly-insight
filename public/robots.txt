@@ -1,0 +1,10 @@
+User-agent: *
+Allow: /
+
+Disallow: /sign-in/?returnUrl=/tools/essay-outline-tool
+Disallow: /sign-in/?returnUrl=/tools/paraphraser-tool
+Disallow: /sign-in/?returnUrl=/tools/summarizer-tool
+Disallow: /sign-in/?returnUrl=/tools/thesis-generator-tool
+
+sitemap: https://scholarlyhelp.com/sitemap.xml
+
