@@ -2,30 +2,28 @@
 @tailwind components;
 @tailwind utilities;
 
-/* ===============================
-   ROOT & BASE STYLES
-================================ */
+/* Optimize font loading to prevent blocking */
+
 
 :root {
   --background: #ffffff;
   --foreground: #171717;
 }
 
+/* Critical styles - loaded immediately */
+
 body {
-  background: var(--background);
+  background: #fff;
   color: var(--foreground);
   font-family: var(--font-poppins), Arial, Helvetica, sans-serif;
 }
 
-/* Global font fallback (no !important needed if placed last) */
+/* Force all elements to use Poppins to prevent external font loading */
 * {
-  font-family: var(--font-poppins), Arial, Helvetica, sans-serif;
+  font-family: var(--font-poppins), Arial, Helvetica, sans-serif !important;
 }
 
-/* ===============================
-   SCROLLBAR
-================================ */
-
+/* Hide native scrollbars - critical for layout */
 .no-scrollbar {
   -ms-overflow-style: none;
   scrollbar-width: none;
@@ -35,17 +33,14 @@ body {
   display: none;
 }
 
-/* ===============================
-   FORM / LAYOUT
-================================ */
-
+/* Form styles - critical for hero section */
 .formtwo .cus-img {
   display: none;
 }
 
 .formtwo .cus-div {
-  position: relative;
   z-index: 9;
+  position: relative;
 }
 
 .lineAdded::after {
@@ -53,23 +48,17 @@ body {
   position: absolute;
   width: 10px;
   height: 10px;
-  background: #e9e9f1;
+  background: #E9E9F1;
   bottom: 0;
   left: 0;
 }
 
-/* ===============================
-   PERFORMANCE HELPERS
-================================ */
-
+/* GPU acceleration for smooth scrolling */
 .will-change-scroll {
   will-change: scroll-position;
 }
 
-/* ===============================
-   ANIMATIONS
-================================ */
-
+/* Optimize animations with GPU acceleration */
 .animate-fade-in {
   animation: fade-in 0.6s ease-out;
 }
@@ -87,8 +76,13 @@ body {
 }
 
 @keyframes fade-in {
-  from { opacity: 0; }
-  to { opacity: 1; }
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
 }
 
 @keyframes fade-in-up {
@@ -96,6 +90,7 @@ body {
     opacity: 0;
     transform: translateY(20px);
   }
+
   to {
     opacity: 1;
     transform: translateY(0);
@@ -107,6 +102,7 @@ body {
     opacity: 0;
     transform: translateX(-30px);
   }
+
   to {
     opacity: 1;
     transform: translateX(0);
@@ -118,80 +114,143 @@ body {
     opacity: 0;
     transform: translateX(30px);
   }
+
   to {
     opacity: 1;
     transform: translateX(0);
   }
 }
 
-/* ===============================
-   SLICK FONT BLOCKING
-================================ */
+/*
+ * FONT STRATEGY:
+ * - Poppins is self-hosted via next/font (NO CDN calls to fonts.googleapis.com)
+ * - slick-theme.css is NOT imported (it loads a heavy font file)
+ * - All slick icons are replaced with pure CSS arrows/dots below
+ */
 
+/* Block any attempts to load slick font - this font-face declaration
+   overrides the one in slick.css, pointing to a non-existent font */
 @font-face {
-  font-family: "slick";
-  src: local("");
+  font-family: 'slick';
+  src: local('');
+  /* Empty local - prevents network request */
   font-display: block;
 }
 
-/* ===============================
-   SLICK SLIDER OVERRIDES
-================================ */
-
+/* Slick slider overrides - pure CSS arrows instead of font icons */
 .slick-list {
-  padding-top: 65px;
-  padding-bottom: 40px;
-  overflow-y: visible;
+  padding-top: 65px !important;
+  overflow-y: visible !important;
+  padding-bottom: 40px !important;
 }
 
-.slick-slider {
-  padding-bottom: 0;
+.slick-dots {
+  bottom: -60px;
 }
-
-/* ---------- Dots ---------- */
 
 .slick-dots {
   position: relative;
   bottom: -30px;
+  display: block;
   width: 100px;
-  margin: auto;
   padding: 0;
+  margin: auto;
   list-style: none;
   text-align: center;
   z-index: 999;
 }
 
-.slick-dots li {
-  display: inline-block;
-  margin: 3px;
-  width: 10px;
-}
-
+.slick-dots li,
 .slick-dots li button {
-  width: 10px;
-  height: 10px;
-  padding: 0;
-  border: 0;
-  background: transparent;
+  width: 20px;
+  height: 20px;
   cursor: pointer;
 }
 
-.slick-dots li button::before {
-  content: "";
+.slick-dots li {
+  position: relative;
+  display: inline-block;
+  margin: 0 5px;
+  padding: 0;
+}
+
+.slick-dots li {
+  width: 10px !important;
+}
+
+.slick-dots li {
+  margin: 0 !important;
+}
+
+.slick-dots li button {
+  font-size: 0;
+  line-height: 0;
   display: block;
-  width: 10px;
-  height: 10px;
-  background-color: #bfbfbf;
+  padding: 5px;
+  color: transparent;
+  border: 0;
+  outline: none;
+  background: transparent;
+}
+
+.slick-dots li,
+.slick-dots li button {
+  width: 20px;
+  height: 20px;
+  cursor: pointer;
+}
+
+.slick-dots li button:before {
+  font-family: slick;
+  font-size: 6px;
+  line-height: 20px;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 20px;
+  height: 20px;
+  content: "•";
+  text-align: center;
+  opacity: .5;
+  color: #000;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.slick-dots li button:before {
+  width: 10px !important;
+  height: 10px !important;
+}
+
+.slick-dots li {
+  margin: 0 !important;
+  width: 10px !important;
+}
+
+.slick-dots li button:before {
+  width: 7px !important;
+  height: 7px !important;
+  /* Use CSS instead of slick font icon */
+  font-family: inherit !important;
+  content: "" !important;
+  background-color: #bfbfbf !important;
   border-radius: 50%;
-  opacity: 0.5;
 }
 
-.slick-dots li.slick-active button::before {
-  background-color: #000;
-  opacity: 1;
+.slick-dots li.slick-active button:before {
+  background-color: #000000 !important;
 }
 
-/* ---------- Arrows ---------- */
+.slick-slider {
+  padding-bottom: 0px;
+}
+
+/* Override slick arrows to use CSS instead of font icons - eliminates 3+ second font load */
+.slick-prev:before,
+.slick-next:before {
+  font-family: inherit !important;
+  content: "" !important;
+}
 
 .slick-prev,
 .slick-next {
@@ -202,13 +261,14 @@ body {
 .slick-prev::after,
 .slick-next::after {
   content: "";
-  position: absolute;
-  top: 50%;
-  left: 50%;
+  display: block;
   width: 12px;
   height: 12px;
   border-left: 3px solid #1b1b1b;
   border-bottom: 3px solid #1b1b1b;
+  position: absolute;
+  top: 50%;
+  left: 50%;
 }
 
 .slick-prev::after {
