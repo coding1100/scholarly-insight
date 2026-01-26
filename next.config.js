@@ -64,6 +64,7 @@ const nextConfig = {
       'react-loader-spinner',
       'dayjs',
     ],
+    optimizeCss: true,
   },
 
   // Webpack optimizations for smaller bundles
