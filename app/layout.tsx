@@ -1,7 +1,6 @@
 import { Poppins } from "next/font/google";
 import Script from "next/script";
 import dynamic from "next/dynamic";
-import "./globals.css";
 import { Metadata } from "next";
 
 const ClientScripts = dynamic(() => import("./components/ClientScripts"), {
@@ -14,7 +13,7 @@ const poppins = Poppins({
   display: "swap",
   variable: "--font-poppins",
   weight: ["400", "500", "600", "700"],
-  // preload: true,
+  preload: false,
   fallback: ["system-ui", "-apple-system", "Segoe UI", "Arial", "sans-serif"],
   adjustFontFallback: true,
 });
@@ -37,19 +36,37 @@ export default function RootLayout({
           <meta httpEquiv="Content-Security-Policy" content="upgrade-insecure-requests" />
         )}
 
-        
-
-
+        {/* Load global CSS after user interaction to improve initial load */}
+        <Script
+          id="load-globals-css"
+          strategy="afterInteractive"
+          dangerouslySetInnerHTML={{
+            __html: `
+              function loadGlobalStyles() {
+                if (document.getElementById('globals-css')) return;
+                const link = document.createElement('link');
+                link.id = 'globals-css';
+                link.rel = 'stylesheet';
+                link.href = '/app/globals.css';
+                document.head.appendChild(link);
+              }
+              
+              // Load on first user interaction
+              const events = ['scroll', 'mousedown', 'touchstart', 'keydown'];
+              const loadOnce = function() {
+                loadGlobalStyles();
+                events.forEach(e => window.removeEventListener(e, loadOnce));
+              };
+              events.forEach(e => window.addEventListener(e, loadOnce, { once: true, passive: true }));
+              
+              // Fallback: load after 2 seconds if no interaction
+              setTimeout(loadGlobalStyles, 2000);
+            `,
+          }}
+        />
       </head>
-      <body suppressHydrationWarning>
+      <body suppressHydrationWarning={true}>
         <main id="main-content">{children}</main>
-
-        {/* 
-         * PERFORMANCE: All scripts use lazyOnload to minimize main thread work
-         * This defers all non-critical scripts until after page is fully interactive
-         */}
-
-        
 
         {/* GTM - Loaded only after browser is idle or user interaction to protect web vitals */}
         <Script
