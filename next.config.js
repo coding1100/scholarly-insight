@@ -27,9 +27,17 @@ const nextConfig = {
   // Reduce JS bundle size
   productionBrowserSourceMaps: false,
 
-  // Optimize CSS - Next.js automatically removes unused CSS in production
-  // Combined with PurgeCSS in postcss.config.js for maximum optimization
+  // Optimize fonts and CSS
   optimizeFonts: true,
+  
+  // Experimental: Optimize CSS delivery to prevent render-blocking
+  experimental: {
+    optimizeCss: true,
+    optimizePackageImports: [
+      'react-icons',
+      'lucide-react',
+    ],
+  },
 
   eslint: {
     ignoreDuringBuilds: true,
