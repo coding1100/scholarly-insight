@@ -4,8 +4,8 @@ import { FC, useMemo } from "react";
 import React from "react";
 import Image from "next/image";
 import Slider from "react-slick";
-import "slick-carousel/slick/slick.css";
-// slick-theme.css removed - loads heavy font file, styles in globals.css
+import { useSlickCSS } from "@/app/hooks/useSlickCSS";
+// Dynamically load slick CSS to avoid critical path - improves web vitals
 import { usePageData } from "./usePageData";
 
 // Icons & Images
@@ -732,6 +732,8 @@ interface CustomerReviewsProps {
 const CustomerReviews: FC<CustomerReviewsProps> = ({
   btnText: propBtnText,
 }) => {
+  // Dynamically load slick CSS only when component mounts
+  useSlickCSS();
   const data = usePageData();
   const customerReviews = data?.customerReviews;
   const btnText =

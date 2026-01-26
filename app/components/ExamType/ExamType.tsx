@@ -5,8 +5,8 @@ import Image from "next/image";
 import Button from "../Button/Button";
 import useBreakpoint from "@/app/(pages)/hooks/useMediabreakpoint";
 import Slider from "react-slick";
-import "slick-carousel/slick/slick.css";
-// slick-theme.css removed - loads heavy font file, styles in globals.css
+import { useSlickCSS } from "@/app/hooks/useSlickCSS";
+// Dynamically load slick CSS to avoid critical path - improves web vitals
 import "./index.css";
 import SampleBg from "@/app/assets/Images/sampleBg.webp";
 import { sampleCardContent } from "./content";
@@ -21,6 +21,8 @@ interface ExamTypeProps {
   content: Content[];
 }
 const ExamType: FC<ExamTypeProps> = ({ content }) => {
+  // Dynamically load slick CSS only when component mounts
+  useSlickCSS();
   return (
     <div
       className="py-8 relative bg-primary-500 xl:flex justify-center"

@@ -4,8 +4,8 @@ import Image, { StaticImageData } from "next/image";
 import { FC, useEffect, useMemo, useRef, useState } from "react";
 import type { CSSProperties } from "react";
 import Slider from "react-slick";
-// slick-theme.css removed - loads heavy font file, styles in globals.css
-import "slick-carousel/slick/slick.css";
+import { useSlickCSS } from "@/app/hooks/useSlickCSS";
+// Dynamically load slick CSS to avoid critical path - improves web vitals
 
 interface AiTrustProps {
   trustSection: {
@@ -16,6 +16,8 @@ interface AiTrustProps {
 }
 
 const AiTrust: FC<AiTrustProps> = ({ trustSection }) => {
+  // Dynamically load slick CSS only when component mounts
+  useSlickCSS();
   const [isHovered, setIsHovered] = useState(false);
   const [isVisible, setIsVisible] = useState(false);
   const sectionRef = useRef<HTMLElement>(null);

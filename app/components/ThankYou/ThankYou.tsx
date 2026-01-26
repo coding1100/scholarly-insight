@@ -10,8 +10,8 @@ import LocationIcon from "@/app/assets/Images/location.png";
 import BoxStar from "@/app/assets/Images/boxStar.png";
 import { content } from "./content";
 import Slider from "react-slick";
-import "slick-carousel/slick/slick.css";
-// slick-theme.css removed - loads heavy font file, styles in globals.css
+import { useSlickCSS } from "@/app/hooks/useSlickCSS";
+// Dynamically load slick CSS to avoid critical path - improves web vitals
 import "./style.css";
 import TrustPilotLogo from "@/app/assets/Images/trustpilotlogo.png";
 import axios from "axios";
@@ -29,6 +29,8 @@ declare global {
 type ThankYouProps = {};
 
 const ThankYou: FC<ThankYouProps> = ({}) => {
+  // Dynamically load slick CSS only when component mounts
+  useSlickCSS();
   const videoRef = useRef<HTMLVideoElement>(null);
   const [isMuted, setIsMuted] = useState(true);
 

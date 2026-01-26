@@ -5,8 +5,8 @@ import Button from "../Button/Button";
 import useBreakpoint from "@/app/(pages)/hooks/useMediabreakpoint";
 import Slider from "react-slick";
 import SampleCard from "./SampleCard";
-import "slick-carousel/slick/slick.css";
-// slick-theme.css removed - loads heavy font file, styles in globals.css
+import { useSlickCSS } from "@/app/hooks/useSlickCSS";
+// Dynamically load slick CSS to avoid critical path - improves web vitals
 import "./index.css";
 import SampleBg from "@/app/assets/Images/sampleBg.webp";
 import { sampleCardContent } from "./content";
@@ -17,6 +17,8 @@ interface SamplesProps {
   btnText?: string;
 }
 const Samples: FC<SamplesProps> = ({ btnText }) => {
+  // Dynamically load slick CSS only when component mounts
+  useSlickCSS();
   const { breakpoint } = useBreakpoint();
   const isDesktop = breakpoint === "lg" || breakpoint === "xl";
   const currentPage = usePathname();
