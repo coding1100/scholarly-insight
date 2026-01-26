@@ -162,7 +162,7 @@ body {
 
 .slick-dots li,
 .slick-dots li button {
-  width: 20px;
+  width: 10px;
   height: 20px;
   cursor: pointer;
 }
@@ -179,7 +179,7 @@ body {
 }
 
 .slick-dots li {
-  margin: 0 !important;
+  margin: 3px !important;
 }
 
 .slick-dots li button {
@@ -195,7 +195,7 @@ body {
 
 .slick-dots li,
 .slick-dots li button {
-  width: 20px;
+  width: 10px;
   height: 20px;
   cursor: pointer;
 }
@@ -223,13 +223,10 @@ body {
 }
 
 .slick-dots li {
-  margin: 0 !important;
   width: 10px !important;
 }
 
 .slick-dots li button:before {
-  width: 7px !important;
-  height: 7px !important;
   /* Use CSS instead of slick font icon */
   font-family: inherit !important;
   content: "" !important;

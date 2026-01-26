@@ -191,7 +191,7 @@ export default function CardCarousel() {
       </Slider>
 
       {/* Navigation */}
-      <div className="w-[225px] mx-auto flex justify-around mt-[5px] relative z-[9]">
+      <div className="w-[260px] mx-auto flex justify-around mt-[2px] relative z-[9]">
         <ChevronLeft size={20} className="cursor-pointer" onClick={goPrev} />
         <ChevronRight size={20} className="cursor-pointer" onClick={goNext} />
       </div>
