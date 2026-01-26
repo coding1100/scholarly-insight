@@ -33,9 +33,7 @@ const nextConfig = {
   typescript: {
     ignoreBuildErrors: false,
   },
-  experimental: {
-    optimizeCss: true,
-  },
+  optimizeCss: true,
 
   // Modularize heavy imports - reduces unused JS significantly
   modularizeImports: {
