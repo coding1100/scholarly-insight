@@ -62,6 +62,7 @@
     "@types/react-slick": "^0.23.13",
     "autoprefixer": "^10.4.20",
     "cross-env": "^10.1.0",
+    "cssnano": "^7.1.2",
     "eslint": "^8.57.1",
     "eslint-config-next": "14.2.5",
     "postcss": "^8.4.41",

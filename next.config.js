@@ -75,13 +75,22 @@ const nextConfig = {
   },
 
   // Webpack optimizations for smaller bundles
-  webpack: (config, { isServer }) => {
+  webpack: (config, { isServer, dev }) => {
     if (!isServer) {
       // Replace moment with dayjs (much smaller) - safe alias
       config.resolve.alias = {
         ...config.resolve.alias,
         'moment': 'dayjs',
       };
+      
+      // Optimize CSS in production
+      if (!dev) {
+        // Ensure CSS is properly minified and optimized
+        config.optimization = {
+          ...config.optimization,
+          minimize: true,
+        };
+      }
     }
     return config;
   },

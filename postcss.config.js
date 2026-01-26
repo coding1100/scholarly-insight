@@ -2,9 +2,12 @@ module.exports = {
   plugins: {
     tailwindcss: {},
     autoprefixer: {},
-    // Only run PurgeCSS in production to speed up development
-    // Note: Tailwind CSS v3+ already purges unused CSS automatically.
-    // PurgeCSS here provides additional optimization for custom CSS files.
+    // Only run PurgeCSS and cssnano in production to speed up development
+    // IMPORTANT: Tailwind CSS v3+ already purges unused CSS automatically via JIT mode.
+    // PurgeCSS here provides additional optimization for:
+    // 1. Custom CSS in globals.css
+    // 2. Third-party CSS (like slick-carousel if imported statically)
+    // 3. Any CSS that Tailwind doesn't handle
     // Using styles.pure.css as reference for what CSS is actually used.
     ...(process.env.NODE_ENV === 'production' ? {
       '@fullhuman/postcss-purgecss': {
@@ -14,22 +17,21 @@ module.exports = {
           './pages/**/*.{js,jsx,ts,tsx,mdx}',
           './src/**/*.{js,jsx,ts,tsx,mdx}',
         ],
-        // Safelist: Keep these classes even if not found in content
-        // Based on styles.pure.css reference - these are the classes actually used
+        // Minimal safelist - only keep what's absolutely necessary
+        // Be aggressive to remove unused CSS and match styles.pure.css optimization
         safelist: {
-          // Keep all slick-carousel classes (dynamically loaded)
+          // Only keep slick-carousel classes that are dynamically loaded
           standard: [
             /^slick-/,
             /^slick$/,
-            /\.slick-/,
-            // Keep dynamically generated classes
-            /^carousel-/,
+            // Keep only specific custom classes that are used
+            /^carousel-card$/,
             /^center-card$/,
             /^samplesSlider$/,
             /^sampleCard$/,
             /^samplesWrap$/,
             /^customerReviewsWrap$/,
-            /^customerReviewsCard/,
+            /^customerReviewsCard$/,
             /^testimonials$/,
             // Keep custom utility classes from globals.css
             /^no-scrollbar$/,
@@ -40,30 +42,16 @@ module.exports = {
             /^animate-fade-in-up$/,
             /^animate-slide-in-left$/,
             /^animate-slide-in-right$/,
-            // Keep all Tailwind utility classes (they're already purged by Tailwind, but safelist for safety)
-            // Keep responsive variants
-            /^(sm|md|lg|xl|2xl|min-\[|max-\[):/,
-            // Keep state variants
-            /^(hover|focus|active|disabled|before|after):/,
-            // Keep animation classes
-            /^animate-/,
-            // Keep dark mode classes if used
-            /^dark:/,
           ],
-          // Keep classes with these patterns
+          // Keep classes with these patterns (but be specific)
           deep: [
             /^slick-/,
             /slick$/,
-            // Keep Tailwind utility patterns
-            /^[a-z]+:/,
-            // Keep arbitrary value classes
-            /\[.*?\]/,
           ],
           // Keep keyframes, media queries, and other at-rules
           greedy: [
             /^@keyframes/,
             /^@media/,
-            /^@supports/,
             /^@font-face/,
             /^@layer/,
           ],
@@ -97,15 +85,11 @@ module.exports = {
             })
             .flat();
           
-          // Extract Tailwind-like utility classes (including variants)
-          const utilityClasses = content.match(/\b([a-z]+(?:-[a-z0-9]+)*(?::[a-z-]+)?)\b/g) || [];
-          
           // Combine all extracted classes and remove duplicates
           const allClasses = [
             ...classNameExtracted,
             ...templateExtracted,
             ...classExtracted,
-            ...utilityClasses,
           ];
           
           // Return unique classes
@@ -115,6 +99,25 @@ module.exports = {
         variables: true,
         keyframes: true,
         fontFace: true,
+      },
+      // Add cssnano for CSS minification and optimization
+      // This runs AFTER PurgeCSS to minify the final CSS
+      cssnano: {
+        preset: ['default', {
+          discardComments: {
+            removeAll: true,
+          },
+          normalizeWhitespace: true,
+          minifyFontValues: true,
+          minifySelectors: true,
+          // Remove unused CSS rules
+          reduceIdents: false, // Keep animation names
+          zindex: false, // Don't optimize z-index values
+          // Aggressive optimization
+          discardUnused: true, // Remove unused @rules
+          mergeRules: true, // Merge duplicate rules
+          normalizeUrl: true, // Normalize URLs
+        }],
       },
     } : {}),
   },

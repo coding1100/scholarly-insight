@@ -11,10 +11,11 @@ const config: Config = {
     // Include HTML files if any
     "./public/**/*.html",
   ],
-  // Only safelist classes that are ACTUALLY dynamically generated
+  // Minimal safelist - only classes that are ACTUALLY dynamically generated
+  // Be aggressive to reduce CSS bundle size
   safelist: [
+    // Only keep classes that are truly dynamically generated
     'animate-pulse',
-    'bg-gray-100',
   ],
   // Blocklist unused Tailwind utilities to reduce CSS bundle
   blocklist: [
