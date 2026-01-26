@@ -14,7 +14,7 @@ const poppins = Poppins({
   display: "swap",
   variable: "--font-poppins",
   weight: ["400", "500", "600", "700"],
-  // preload: true,
+  preload: true,
   fallback: ["system-ui", "-apple-system", "Segoe UI", "Arial", "sans-serif"],
   adjustFontFallback: true,
 });
@@ -48,8 +48,6 @@ export default function RootLayout({
          * PERFORMANCE: All scripts use lazyOnload to minimize main thread work
          * This defers all non-critical scripts until after page is fully interactive
          */}
-
-        
 
         {/* GTM - Loaded only after browser is idle or user interaction to protect web vitals */}
         <Script
@@ -123,7 +121,6 @@ export default function RootLayout({
             `,
           }}
         />
-
 
         {/* Client-side scripts that need pathname */}
         <ClientScripts />
