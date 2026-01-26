@@ -1,8 +1,12 @@
 import { Poppins } from "next/font/google";
 import Script from "next/script";
+import dynamic from "next/dynamic";
 import "./globals.css";
 import { Metadata } from "next";
-import ClientScripts from "./components/ClientScripts";
+
+const ClientScripts = dynamic(() => import("./components/ClientScripts"), {
+  ssr: false,
+});
 
 // Optimize font loading - next/font self-hosts fonts (NO CDN calls)
 const poppins = Poppins({
