@@ -1,6 +1,7 @@
 import { Poppins } from "next/font/google";
 import Script from "next/script";
 import dynamic from "next/dynamic";
+import "./globals.css";
 import { Metadata } from "next";
 
 const ClientScripts = dynamic(() => import("./components/ClientScripts"), {
@@ -36,39 +37,11 @@ export default function RootLayout({
           <meta httpEquiv="Content-Security-Policy" content="upgrade-insecure-requests" />
         )}
 
-        {/* Load global CSS after user interaction to improve initial load */}
-        <Script
-          id="load-globals-css"
-          strategy="afterInteractive"
-          dangerouslySetInnerHTML={{
-            __html: `
-              function loadGlobalStyles() {
-                if (document.getElementById('globals-css')) return;
-                const link = document.createElement('link');
-                link.id = 'globals-css';
-                link.rel = 'stylesheet';
-                link.href = '/app/globals.css';
-                document.head.appendChild(link);
-              }
-              
-              // Load on first user interaction
-              const events = ['scroll', 'mousedown', 'touchstart', 'keydown'];
-              const loadOnce = function() {
-                loadGlobalStyles();
-                events.forEach(e => window.removeEventListener(e, loadOnce));
-              };
-              events.forEach(e => window.addEventListener(e, loadOnce, { once: true, passive: true }));
-              
-              // Fallback: load after 2 seconds if no interaction
-              setTimeout(loadGlobalStyles, 2000);
-            `,
-          }}
-        />
       </head>
       <body suppressHydrationWarning={true}>
         <main id="main-content">{children}</main>
 
-        {/* GTM - Loaded only after browser is idle or user interaction to protect web vitals */}
+        {/* GTM - Optimized loading strategy: user interaction > idle > fallback timeout */}
         <Script
           id="gtm-script"
           strategy="afterInteractive"
@@ -77,65 +50,44 @@ export default function RootLayout({
               (function() {
                 var gtmLoaded = false;
                 
-                function addDNSPrefetch() {
-                  // Add DNS prefetch dynamically only when needed
-                  var link = document.createElement('link');
-                  link.rel = 'dns-prefetch';
-                  link.href = 'https://www.googletagmanager.com';
-                  document.head.appendChild(link);
-                }
-                
                 function initGTM() {
                   if (gtmLoaded) return;
                   gtmLoaded = true;
                   
-                  // Add DNS prefetch right before loading GTM
-                  addDNSPrefetch();
+                  // Add DNS prefetch inline to reduce overhead
+                  var link = document.createElement('link');
+                  link.rel = 'dns-prefetch';
+                  link.href = 'https://www.googletagmanager.com';
+                  document.head.appendChild(link);
                   
-                  (function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
-                  new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
-                  j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
-                  'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
-                  })(window,document,'script','dataLayer','GTM-5ZHV46X');
+                  // Load GTM
+                  (function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src='https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);})(window,document,'script','dataLayer','GTM-5ZHV46X');
                 }
                 
-                // Wait for page to be fully loaded
-                function waitForLoad() {
-                  if (document.readyState === 'complete') {
-                    loadGTM();
-                  } else {
-                    window.addEventListener('load', loadGTM, { once: true });
-                  }
-                }
-                
-                function loadGTM() {
-                  // Use requestIdleCallback for maximum web vitals protection
-                  if ('requestIdleCallback' in window) {
-                    requestIdleCallback(function() {
-                      setTimeout(initGTM, 5000); // 5 second delay after idle
-                    }, { timeout: 8000 }); // Fallback after 8 seconds max
-                  } else {
-                    // Fallback for browsers without requestIdleCallback
-                    setTimeout(initGTM, 8000);
-                  }
-                }
-                
-                // Also load on first user interaction as backup
-                var interactionEvents = ['scroll', 'mousedown', 'touchstart', 'keydown'];
-                var interactionHandler = function() {
-                  if (!gtmLoaded) {
-                    setTimeout(initGTM, 3000);
-                    interactionEvents.forEach(function(event) {
-                      window.removeEventListener(event, interactionHandler);
-                    });
-                  }
+                // Priority 1: Load immediately on user interaction
+                var events = ['scroll', 'mousedown', 'touchstart', 'keydown'];
+                var handleInteraction = function() {
+                  initGTM();
+                  events.forEach(e => window.removeEventListener(e, handleInteraction));
                 };
+                events.forEach(e => window.addEventListener(e, handleInteraction, { once: true, passive: true }));
                 
-                interactionEvents.forEach(function(event) {
-                  window.addEventListener(event, interactionHandler, { once: true, passive: true });
-                });
-                
-                waitForLoad();
+                // Priority 2: Load on idle (after page is fully loaded)
+                if (document.readyState === 'complete') {
+                  if ('requestIdleCallback' in window) {
+                    requestIdleCallback(initGTM, { timeout: 4000 });
+                  } else {
+                    setTimeout(initGTM, 3000);
+                  }
+                } else {
+                  window.addEventListener('load', function() {
+                    if ('requestIdleCallback' in window) {
+                      requestIdleCallback(initGTM, { timeout: 4000 });
+                    } else {
+                      setTimeout(initGTM, 3000);
+                    }
+                  }, { once: true });
+                }
               })();
             `,
           }}
