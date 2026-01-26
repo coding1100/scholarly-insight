@@ -37,9 +37,8 @@ export default function RootLayout({
           <meta httpEquiv="Content-Security-Policy" content="upgrade-insecure-requests" />
         )}
 
-        
-
-
+        {/* Preconnect to slick-carousel CSS for faster loading */}
+        <link rel="prefetch" href="/_next/static/chunks/slick-carousel" as="style" />
       </head>
       <body suppressHydrationWarning>
         <main id="main-content">{children}</main>
