@@ -33,6 +33,9 @@ const nextConfig = {
   typescript: {
     ignoreBuildErrors: false,
   },
+  experimental: {
+    optimizeCss: true,
+  },
 
   // Modularize heavy imports - reduces unused JS significantly
   modularizeImports: {
@@ -64,7 +67,6 @@ const nextConfig = {
       'react-loader-spinner',
       'dayjs',
     ],
-    optimizeCss: true,
   },
 
   // Webpack optimizations for smaller bundles
