@@ -37,8 +37,10 @@ export default function RootLayout({
           <meta httpEquiv="Content-Security-Policy" content="upgrade-insecure-requests" />
         )}
 
-        {/* Preconnect to slick-carousel CSS for faster loading */}
-        <link rel="prefetch" href="/_next/static/chunks/slick-carousel" as="style" />
+
+        
+
+
       </head>
       <body suppressHydrationWarning>
         <main id="main-content">{children}</main>
@@ -47,6 +49,8 @@ export default function RootLayout({
          * PERFORMANCE: All scripts use lazyOnload to minimize main thread work
          * This defers all non-critical scripts until after page is fully interactive
          */}
+
+        
 
         {/* GTM - Loaded only after browser is idle or user interaction to protect web vitals */}
         <Script
@@ -120,6 +124,7 @@ export default function RootLayout({
             `,
           }}
         />
+
 
         {/* Client-side scripts that need pathname */}
         <ClientScripts />
