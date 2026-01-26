@@ -2,8 +2,8 @@
 
 import Image, { StaticImageData } from "next/image";
 import Slider from "react-slick";
-import { useSlickCSS } from "@/app/hooks/useSlickCSS";
-// Dynamically load slick CSS to avoid critical path - improves web vitals
+import "slick-carousel/slick/slick.css";
+// slick-theme.css removed - loads heavy font file, styles in globals.css
 import { ChevronLeft, ChevronRight } from "lucide-react";
 import { useRef, FC } from "react";
 
@@ -21,8 +21,6 @@ interface ExpertSectionProps {
 }
 
 const ExpertSection: FC<ExpertSectionProps> = ({ content }) => {
-  // Dynamically load slick CSS only when component mounts
-  useSlickCSS();
   const sliderRef = useRef<Slider | null>(null);
 
   const settings = {

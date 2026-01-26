@@ -5,10 +5,10 @@ import Slider from "react-slick";
 import Image from "next/image";
 import { ChevronLeft, ChevronRight } from "lucide-react";
 import { usePageData } from "./usePageData";
-import { useSlickCSS } from "@/app/hooks/useSlickCSS";
 
-// Dynamically load slick CSS to avoid critical path - improves web vitals
+// Import only slick base CSS - theme CSS loads heavy font file
 // Arrow and dot styles are handled in globals.css
+import "slick-carousel/slick/slick.css";
 
 import slid1 from "@/app/assets/Images/slide1.webp";
 import slid2 from "@/app/assets/Images/slide2.webp";
@@ -71,9 +71,6 @@ const cardData = [
 ];
 
 export default function CardCarousel() {
-  // Dynamically load slick CSS only when component mounts
-  useSlickCSS();
-  
   const data = usePageData();
   const cardCarousel = data?.cardCarousel;
   const sliderRef = useRef<Slider | null>(null);
