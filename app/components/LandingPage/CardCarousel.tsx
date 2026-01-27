@@ -163,7 +163,8 @@ export default function CardCarousel() {
                   <Image
                     src={card.image}
                     alt={card.title}
-                    
+                    width={300}
+                    height={330}
                     className="object-cover w-[300px] h-[330px] rounded-lg mx-auto relative top-[-80px] max-[768px]:w-[200px] max-[768px]:h-[220px]"
                   />
                 </div>
