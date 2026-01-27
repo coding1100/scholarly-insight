@@ -164,8 +164,8 @@ export default function CardCarousel() {
                     src={card.image}
                     alt={card.title}
                     width={300}
-                    height={310}
-                    className="object-cover rounded-lg mx-auto relative top-[-80px] w-[300px] h-[330px] max-[768px]:w-[300px] max-[768px]:h-[310px]"
+                    height={330}
+                    className="object-cover rounded-lg mx-auto relative top-[-80px]"
                   />
                 </div>
                 <div className="flex flex-col h-full justify-center relative top-[-35px]">
@@ -191,7 +191,7 @@ export default function CardCarousel() {
       </Slider>
 
       {/* Navigation */}
-      <div className="w-[260px] mx-auto flex justify-around mt-[2px] relative z-[9]">
+      <div className="w-[225px] mx-auto flex justify-around mt-[5px] relative z-[9]">
         <ChevronLeft size={20} className="cursor-pointer" onClick={goPrev} />
         <ChevronRight size={20} className="cursor-pointer" onClick={goNext} />
       </div>

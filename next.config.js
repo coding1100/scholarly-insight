@@ -1,8 +1,4 @@
 /** @type {import('next').NextConfig} */
-const withBundleAnalyzer = require('@next/bundle-analyzer')({
-  enabled: process.env.ANALYZE === 'true',
-});
-
 const nextConfig = {
   trailingSlash: true,
 
@@ -75,22 +71,13 @@ const nextConfig = {
   },
 
   // Webpack optimizations for smaller bundles
-  webpack: (config, { isServer, dev }) => {
+  webpack: (config, { isServer }) => {
     if (!isServer) {
       // Replace moment with dayjs (much smaller) - safe alias
       config.resolve.alias = {
         ...config.resolve.alias,
         'moment': 'dayjs',
       };
-      
-      // Optimize CSS in production
-      if (!dev) {
-        // Ensure CSS is properly minified and optimized
-        config.optimization = {
-          ...config.optimization,
-          minimize: true,
-        };
-      }
     }
     return config;
   },
@@ -173,4 +160,4 @@ const nextConfig = {
   },
 };
 
-module.exports = withBundleAnalyzer(nextConfig);
+module.exports = nextConfig;
