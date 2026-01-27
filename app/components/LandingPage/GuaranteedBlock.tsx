@@ -119,7 +119,7 @@ export default function GuaranteeSection() {
           alt="Money-Back Guarantee"
           width={96}
           height={67}
-          className="w-25 h-25 max-[768px]:w-[96px] max-[768px]:h-[67px]"
+          className="w-25 h-25"
         />
       ),
     },
