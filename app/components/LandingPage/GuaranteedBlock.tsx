@@ -88,7 +88,7 @@ export default function GuaranteeSection() {
         </>
       ),
       icon: (
-        <Image src={IconOnTime} alt="On-Time Delivery" className="w-25 h-25" />
+        <Image src={IconOnTime} alt="On-Time Delivery" width={96} height={151} className="w-25 h-25" />
       ),
     },
     {
@@ -117,7 +117,9 @@ export default function GuaranteeSection() {
         <Image
           src={IconMoneyBack}
           alt="Money-Back Guarantee"
-          className="w-25 h-25"
+          width={96}
+          height={67}
+          className="w-25 h-25 max-[768px]:w-[96px] max-[768px]:h-[67px]"
         />
       ),
     },
