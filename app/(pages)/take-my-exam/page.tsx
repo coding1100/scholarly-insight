@@ -10,6 +10,7 @@ import AcademicPartners from "@/app/components/LandingPage/AcademicPartners";
 import GetQoute from "@/app/components/LandingPage/GetQoute";
 import Faq from "@/app/components/LandingPage/Faq";
 import CustomerReviews from "@/app/components/LandingPage/CustomerReviews";
+import DeferUntilInteractive from "@/app/components/DeferUntilInteractive";
 import dynamic from "next/dynamic";
 import { MetaData } from "@/app/metadata/metadata";
 import { TakeMyExamDataProvider } from "../TakeMyExamDataProvider";
@@ -67,18 +68,20 @@ const Page = async () => {
     <TakeMyExamDataProvider data={pageData}>
       <MainLayout>
         <HeroSection />
-        <Ratings />
-        <CardCarousel />
-        <Description />
-        <GuaranteedBlock />
-        <WhySlider />
-        <CustomerReviews />
-        <ProcessSection />
-        <Success />
-        {/* <Subjects /> */}
-        <AcademicPartners />
-        <GetQoute />
-        <Faq />
+        <DeferUntilInteractive>
+          <Ratings />
+          <CardCarousel />
+          <Description />
+          <GuaranteedBlock />
+          <WhySlider />
+          <CustomerReviews />
+          <ProcessSection />
+          <Success />
+          {/* <Subjects /> */}
+          <AcademicPartners />
+          <GetQoute />
+          <Faq />
+        </DeferUntilInteractive>
       </MainLayout>
     </TakeMyExamDataProvider>
   );

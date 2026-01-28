@@ -13,6 +13,7 @@ import CustomerReviews from "@/app/components/LandingPage/CustomerReviews";
 import GetQoute from "@/app/components/LandingPage/GetQoute";
 import Faq from "@/app/components/LandingPage/Faq";
 import Subjects from "@/app/components/LandingPage/Subjects";
+import DeferUntilInteractive from "@/app/components/DeferUntilInteractive";
 import { ExamDataProvider } from "./ExamDataProvider";
 import { examsSubjects } from "../exams/content";
 
@@ -55,18 +56,20 @@ const Page = async () => {
     <ExamDataProvider data={pageData}>
       <MainLayout>
         <HeroSection />
-        <Ratings />
-        <CardCarousel />
-        <Description />
-        <GuaranteedBlock />
-        <WhySlider />
-        <CustomerReviews />
-        <ProcessSection />
-        <Success />
-        <Subjects defaultSubjects={examsSubjects} />
-        <AcademicPartners />
-        <GetQoute />
-        <Faq />
+        <DeferUntilInteractive>
+          <Ratings />
+          <CardCarousel />
+          <Description />
+          <GuaranteedBlock />
+          <WhySlider />
+          <CustomerReviews />
+          <ProcessSection />
+          <Success />
+          <Subjects defaultSubjects={examsSubjects} />
+          <AcademicPartners />
+          <GetQoute />
+          <Faq />
+        </DeferUntilInteractive>
       </MainLayout>
     </ExamDataProvider>
   );

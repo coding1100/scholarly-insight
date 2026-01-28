@@ -13,6 +13,7 @@ import CustomerReviews from "@/app/components/LandingPage/CustomerReviews";
 import GetQoute from "@/app/components/LandingPage/GetQoute";
 import Faq from "@/app/components/LandingPage/Faq";
 import Subjects from "@/app/components/LandingPage/Subjects";
+import DeferUntilInteractive from "@/app/components/DeferUntilInteractive";
 import { AssignmentDataProvider } from "./AssignmentDataProvider";
 import { assignmentSubject } from "./content";
 // import type { Metadata } from "next";
@@ -72,18 +73,20 @@ const Page = async () => {
     <AssignmentDataProvider data={pageData}>
       <MainLayout>
         <HeroSection />
-        <Ratings />
-        <CardCarousel />
-        <Description />
-        <GuaranteedBlock />
-        <WhySlider />
-        <CustomerReviews />
-        <ProcessSection />
-        <Success />
-        <Subjects defaultSubjects={assignmentSubject} />
-        <AcademicPartners />
-        <GetQoute />
-        <Faq />
+        <DeferUntilInteractive>
+          <Ratings />
+          <CardCarousel />
+          <Description />
+          <GuaranteedBlock />
+          <WhySlider />
+          <CustomerReviews />
+          <ProcessSection />
+          <Success />
+          <Subjects defaultSubjects={assignmentSubject} />
+          <AcademicPartners />
+          <GetQoute />
+          <Faq />
+        </DeferUntilInteractive>
       </MainLayout>
     </AssignmentDataProvider>
   );

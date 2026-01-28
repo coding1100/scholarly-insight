@@ -13,6 +13,7 @@ import CustomerReviews from "@/app/components/LandingPage/CustomerReviews";
 import GetQoute from "@/app/components/LandingPage/GetQoute";
 import Faq from "@/app/components/LandingPage/Faq";
 import Subjects from "@/app/components/LandingPage/Subjects";
+import DeferUntilInteractive from "@/app/components/DeferUntilInteractive";
 import { HomeworkDataProvider } from "./HomeworkDataProvider";
 import { homeworkSubject } from "./content";
 
@@ -60,18 +61,20 @@ const Page = async () => {
     <HomeworkDataProvider data={pageData}>
       <MainLayout>
         <HeroSection />
-        <Ratings />
-        <CardCarousel />
-        <Description />
-        <GuaranteedBlock />
-        <WhySlider />
-        <CustomerReviews />
-        <ProcessSection />
-        <Success />
-        <Subjects defaultSubjects={homeworkSubject} />
-        <AcademicPartners />
-        <GetQoute />
-        <Faq />
+        <DeferUntilInteractive>
+          <Ratings />
+          <CardCarousel />
+          <Description />
+          <GuaranteedBlock />
+          <WhySlider />
+          <CustomerReviews />
+          <ProcessSection />
+          <Success />
+          <Subjects defaultSubjects={homeworkSubject} />
+          <AcademicPartners />
+          <GetQoute />
+          <Faq />
+        </DeferUntilInteractive>
       </MainLayout>
     </HomeworkDataProvider>
   );
