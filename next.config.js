@@ -54,9 +54,8 @@ const nextConfig = {
     // Stricter CSS chunking so each route only loads the CSS it actually needs
     // Helps reduce unused CSS in shared bundles
     cssChunking: 'strict',
-    // Inline critical CSS to improve LCP, especially on mobile
-    optimizeCss: true,  
-    inlineCss: true,
+    // Inline and optimize critical CSS using Critters
+    optimizeCss: true,
 
     // Optimize heavy package imports - tree shake these libraries
     optimizePackageImports: [
