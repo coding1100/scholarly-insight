@@ -51,11 +51,7 @@ const nextConfig = {
 
   // Enable experimental features for better performance
   experimental: {
-    // Stricter CSS chunking so each route only loads the CSS it actually needs
-    // Helps reduce unused CSS in shared bundles
-    cssChunking: 'strict',
-    // Inline and optimize critical CSS using Critters
-    optimizeCss: true,
+    
     inlineCss: true,
     // Optimize heavy package imports - tree shake these libraries
     optimizePackageImports: [
