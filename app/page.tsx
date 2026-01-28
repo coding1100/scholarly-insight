@@ -77,15 +77,15 @@ const Home = async () => {
       <MainLayout>
         <HeroSection />
         <Ratings />
-        {/* <CardCarousel /> */}
-        {/* <Description />
+        <CardCarousel />
+        <Description />
         <GuaranteedBlock />
         <WhySlider />
         <CustomerReviews />
         <ProcessSection />
         <Success />
         <AcademicPartners />
-        <GetQouteDynamic /> */}
+        <GetQouteDynamic />
         <Faq />
       </MainLayout>
     </HomeDataProvider>
