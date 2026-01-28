@@ -3,7 +3,6 @@ import { MetaData } from "@/app/metadata/metadata";
 import HeroSection from "@/app/components/LandingPage/HeroSection";
 import Ratings from "@/app/components/LandingPage/Ratings";
 import WhySlider from "@/app/components/LandingPage/WhySlider";
-import CardCarousel from "@/app/components/LandingPage/CardCarousel";
 import Description from "@/app/components/LandingPage/Description";
 import GuaranteedBlock from "@/app/components/LandingPage/GuaranteedBlock";
 import ProcessSection from "@/app/components/LandingPage/ProcessSection";
@@ -15,11 +14,19 @@ import Faq from "@/app/components/LandingPage/Faq";
 import Subjects from "@/app/components/LandingPage/Subjects";
 import { OnlineClassDataProvider } from "./OnlineClassDataProvider";
 import dynamicImport from "next/dynamic";
+import dynamic from "next/dynamic";
 import { onlineClassSubjects } from "./content";
 
 const GetQouteDynamic = dynamicImport(
   () => import("@/app/components/LandingPage/GetQoute"),
   { ssr: false }
+);
+
+const CardCarousel = dynamic(
+  () => import("@/app/components/LandingPage/CardCarousel"),
+  {
+    ssr: false,
+  }
 );
 
 // Force dynamic rendering to prevent caching
