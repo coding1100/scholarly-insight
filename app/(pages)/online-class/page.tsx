@@ -14,7 +14,6 @@ import Faq from "@/app/components/LandingPage/Faq";
 import Subjects from "@/app/components/LandingPage/Subjects";
 import { OnlineClassDataProvider } from "./OnlineClassDataProvider";
 import dynamicImport from "next/dynamic";
-import dynamic from "next/dynamic";
 import { onlineClassSubjects } from "./content";
 
 const GetQouteDynamic = dynamicImport(
@@ -22,11 +21,9 @@ const GetQouteDynamic = dynamicImport(
   { ssr: false }
 );
 
-const CardCarousel = dynamic(
+const CardCarousel = dynamicImport(
   () => import("@/app/components/LandingPage/CardCarousel"),
-  {
-    ssr: false,
-  }
+  { ssr: false }
 );
 
 // Force dynamic rendering to prevent caching
