@@ -1,7 +1,7 @@
 import { Poppins } from "next/font/google";
 import Script from "next/script";
 import dynamic from "next/dynamic";
-import "../main.css";
+import "./globals.css";
 import { Metadata } from "next";
 
 const ClientScripts = dynamic(() => import("./components/ClientScripts"), {
