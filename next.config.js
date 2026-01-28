@@ -56,7 +56,15 @@ const nextConfig = {
     cssChunking: 'strict',
     // Inline critical CSS to improve LCP, especially on mobile
     inlineCss: true,
-
+    optimizeCss: true,
+    // Optimize images for better LCP
+    optimizeImages: true,
+    // Optimize fonts for better LCP
+    optimizeFonts: true,
+    // Optimize JavaScript for better LCP
+    optimizeJavaScript: true,
+    // Optimize HTML for better LCP
+    optimizeHtml: true,
     // Optimize heavy package imports - tree shake these libraries
     optimizePackageImports: [
       'lucide-react',
