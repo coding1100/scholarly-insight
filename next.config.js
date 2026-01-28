@@ -51,7 +51,7 @@ const nextConfig = {
 
   // Enable experimental features for better performance
   experimental: {
-    
+    cssChunking: 'strict',
     inlineCss: true,
     // Optimize heavy package imports - tree shake these libraries
     optimizePackageImports: [
