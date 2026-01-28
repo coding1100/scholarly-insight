@@ -56,7 +56,7 @@ const nextConfig = {
     cssChunking: 'strict',
     // Inline and optimize critical CSS using Critters
     optimizeCss: true,
-
+    inlineCss: true,
     // Optimize heavy package imports - tree shake these libraries
     optimizePackageImports: [
       'lucide-react',
