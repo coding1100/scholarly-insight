@@ -5,9 +5,6 @@ import Slider from "react-slick";
 import Image from "next/image";
 import { ChevronLeft, ChevronRight } from "lucide-react";
 import { usePageData } from "./usePageData";
-import styles from "./CardCarousel.module.css";
-import "slick-carousel/slick/slick.css";
-
 import slid1 from "@/app/assets/Images/slide1.webp";
 import slid2 from "@/app/assets/Images/slide2.webp";
 import slid3 from "@/app/assets/Images/slide3.webp";
@@ -134,7 +131,7 @@ export default function CardCarousel() {
 
   return (
     <section className="w-full pt-[15px] px-4 text-[#171717] bg-white">
-      <div className={`${styles.carouselRoot} w-full overflow-hidden`}>
+      <div className="w-full overflow-hidden">
         {/* Header */}
         <div className="text-center mb-12 mx-auto max-w-[740px]">
           <h2 className="text-[42px] text-[#000] font-bold   mb-3">
@@ -154,7 +151,9 @@ export default function CardCarousel() {
                   onClick={() => goToSlide(index)}
                   className={[
                     "p-6 shadow-md rounded-[21px] cursor-pointer h-[510px] flex flex-col bg-white transition-all hover:!scale-100 duration-300 relative",
-                    isCenter ? styles.centerCard : `scale-90 ${styles.nonCenterCard}`,
+                    isCenter
+                      ? "bg-[#4744c9] z-20 border border-[#e2e2e2]"
+                      : "scale-90 hover:bg-[#4744c9] hover:scale-110 hover:z-[15] hover:shadow-2xl",
                   ].join(" ")}
                 >
                   <div className="">
@@ -189,6 +188,117 @@ export default function CardCarousel() {
           })}
         </Slider>
       </div>
+
+      {/* Slick slider specific styles (inlined for this component only) */}
+      <style jsx global>{`
+        .slick-list {
+          padding-top: 65px !important;
+          overflow-y: visible !important;
+          padding-bottom: 40px !important;
+        }
+
+        .slick-dots,
+        .slick-dots li {
+          position: relative;
+          padding: 0;
+        }
+
+        .slick-dots {
+          bottom: -30px;
+          display: block;
+          width: 100px;
+          margin: auto;
+          list-style: none;
+          text-align: center;
+          z-index: 999;
+        }
+
+        .slick-dots li button {
+          font-size: 0;
+          line-height: 0;
+          display: block;
+          padding: 5px;
+          color: transparent;
+          border: 0;
+          outline: 0;
+          background: 0 0;
+        }
+
+        .slick-dots li,
+        .slick-dots li button {
+          width: 20px;
+          height: 20px;
+          cursor: pointer;
+        }
+
+        .slick-dots li button:before {
+          font-family: slick;
+          font-size: 6px;
+          line-height: 20px;
+          position: absolute;
+          top: 0;
+          left: 0;
+          content: "•";
+          text-align: center;
+          opacity: 0.5;
+          color: #000;
+          -webkit-font-smoothing: antialiased;
+          -moz-osx-font-smoothing: grayscale;
+          width: 7px !important;
+          height: 7px !important;
+          font-family: inherit !important;
+          content: "" !important;
+          background-color: #bfbfbf !important;
+          border-radius: 50%;
+        }
+
+        .slick-dots li {
+          display: inline-block;
+          margin: 0 !important;
+          width: 10px !important;
+        }
+
+        .slick-dots li.slick-active button:before {
+          background-color: #000 !important;
+        }
+
+        .slick-slider {
+          padding-bottom: 0;
+        }
+
+        .slick-next:before,
+        .slick-prev:before {
+          font-family: inherit !important;
+          content: "" !important;
+        }
+
+        .slick-next,
+        .slick-prev {
+          width: 40px;
+          height: 40px;
+        }
+
+        .slick-next::after,
+        .slick-prev::after {
+          content: "";
+          display: block;
+          width: 12px;
+          height: 12px;
+          border-left: 3px solid #1b1b1b;
+          border-bottom: 3px solid #1b1b1b;
+          position: absolute;
+          top: 50%;
+          left: 50%;
+        }
+
+        .slick-prev::after {
+          transform: translate(-30%, -50%) rotate(45deg);
+        }
+
+        .slick-next::after {
+          transform: translate(-70%, -50%) rotate(-135deg);
+        }
+      `}</style>
 
       {/* Navigation */}
       <div className="w-[225px] mx-auto flex justify-around mt-[5px] relative z-[9]">
