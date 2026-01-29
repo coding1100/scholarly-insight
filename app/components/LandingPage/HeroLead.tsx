@@ -1,6 +1,6 @@
 "use client";
 
-import React, { FC, ReactNode } from "react";
+import React, { FC } from "react";
 import { usePathname } from "next/navigation";
 import respavatar from "@/app/assets/Images/resp-avatar.webp";
 import Link from "next/link";
@@ -40,10 +40,8 @@ interface HeroLeadProps {
     btn1Url?: string;
     btn2Url?: string;
   };
-  /** Server-rendered LCP h1; when set, we don't render the h1 (avoids duplicate and render delay) */
-  headingSlot?: ReactNode;
 }
-const HeroLead: FC<HeroLeadProps> = ({ heroContent, headingSlot }) => {
+const HeroLead: FC<HeroLeadProps> = ({ heroContent }) => {
   const pathname = usePathname();
 
   // Routes where badges section should be hidden
@@ -75,23 +73,24 @@ const HeroLead: FC<HeroLeadProps> = ({ heroContent, headingSlot }) => {
 
   return (
     <div className="max-w-2xl">
-      {headingSlot ?? (
-        <h1 className="font-semibold text-[32px] md:text-[50px] leading-[1.1] text-black">
-          {heroContent?.mainHeading ? (
-            <div dangerouslySetInnerHTML={{ __html: heroContent.mainHeading }} />
-          ) : (
-            <>
-              Stop Sacrificing
-              <br />
-              Your Time, We&apos;ll
-              <br />
-              Handle Your
-              <br />
-              Classes
-            </>
-          )}
-        </h1>
-      )}
+      <h1
+        className="font-semibold text-[32px] md:text-[50px] leading-[1.1] text-black"
+        style={{ fontFamily: "var(--font-poppins)" }}
+      >
+        {heroContent?.mainHeading ? (
+          <div dangerouslySetInnerHTML={{ __html: heroContent.mainHeading }} />
+        ) : (
+          <>
+            Stop Sacrificing
+            <br />
+            Your Time, We&apos;ll
+            <br />
+            Handle Your
+            <br />
+            Classes
+          </>
+        )}
+      </h1>
 
       {!shouldHideBadges && (
         <div className="mt-6 max-[768px]:mt-3 flex flex-col items-start gap-3 relative">

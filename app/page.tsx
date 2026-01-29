@@ -1,6 +1,5 @@
 import MainLayout from "./MainLayout";
 import HeroSection from "./components/LandingPage/HeroSection";
-import HeroHeading from "./components/LandingPage/HeroHeading";
 import { HomeDataProvider } from "./(pages)/HomeDataProvider";
 import { getHomeData } from "./lib/mongodb";
 import BelowFoldLanding from "./components/LandingPage/BelowFoldLanding";
@@ -15,9 +14,7 @@ const Home = async () => {
   return (
     <HomeDataProvider data={pageData}>
       <MainLayout>
-        <HeroSection>
-          <HeroHeading mainHeading={pageData?.heroSection?.mainHeading} />
-        </HeroSection>
+        <HeroSection />
         {/* All below-the-fold sections mount only after the page is interactive */}
         <BelowFoldLanding />
       </MainLayout>
