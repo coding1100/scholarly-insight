@@ -39,7 +39,6 @@ export default function RootLayout({
 
       </head>
       <body suppressHydrationWarning>
-        {/* Initialize dataLayer so GTM and any dataLayer.push() work from first paint */}
         <main id="main-content">{children}</main>
 
         {/* GTM - Loaded only after browser is idle or user interaction to protect web vitals */}
