@@ -72,6 +72,7 @@ export default function CardCarousel() {
   const data = usePageData();
   const cardCarousel = data?.cardCarousel;
   const sliderRef = useRef<Slider | null>(null);
+  const carouselRootRef = useRef<HTMLDivElement | null>(null);
   const [slidesToShow, setSlidesToShow] = useState(5);
   const [centerIndex, setCenterIndex] = useState(0);
   
@@ -109,6 +110,22 @@ export default function CardCarousel() {
     return () => window.removeEventListener("resize", handleResize);
   }, []);
 
+  // Apply .slick-list padding via inline style (Slick renders that element after mount)
+  useEffect(() => {
+    const applySlickListStyle = () => {
+      const root = carouselRootRef.current;
+      if (!root) return;
+      const list = root.querySelector(".slick-list") as HTMLElement | null;
+      if (list) {
+        list.style.padding = "60px 0px 30px 0px";
+        list.style.overflowY = "visible";
+      }
+    };
+    applySlickListStyle();
+    const t = setTimeout(applySlickListStyle, 0);
+    return () => clearTimeout(t);
+  }, [cards.length]);
+
   const settings = {
     slidesToShow: slidesToShow,
     slidesToScroll: 1,
@@ -134,7 +151,7 @@ export default function CardCarousel() {
 
   return (
     <section className="w-full pt-[15px] px-4 text-[#171717] bg-white">
-      <div className={styles.carouselRoot}>
+      <div ref={carouselRootRef} className={styles.carouselRoot}>
         {/* Header */}
         <div className="text-center mb-12 mx-auto max-w-[740px]">
           <h2 className="text-[42px] text-[#000] font-bold   mb-3">
