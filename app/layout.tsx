@@ -39,6 +39,22 @@ export default function RootLayout({
 
       </head>
       <body suppressHydrationWarning>
+        {/* Initialize dataLayer so GTM and any dataLayer.push() work from first paint */}
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `window.dataLayer = window.dataLayer || [];`,
+          }}
+        />
+        {/* GTM noscript fallback (required for GTM to work when JS is disabled / for crawlers) */}
+        <noscript>
+          <iframe
+            src="https://www.googletagmanager.com/ns.html?id=GTM-5ZHV46X"
+            height="0"
+            width="0"
+            style={{ display: "none", visibility: "hidden" }}
+            title="Google Tag Manager"
+          />
+        </noscript>
         <main id="main-content">{children}</main>
 
         {/* GTM - Loaded only after browser is idle or user interaction to protect web vitals */}
