@@ -7,10 +7,6 @@ import { ChevronLeft, ChevronRight } from "lucide-react";
 import { usePageData } from "./usePageData";
 import styles from "./CardCarousel.module.css";
 
-// Import only slick base CSS - theme CSS loads heavy font file
-// Arrow and dot styles are handled in globals.css
-import "slick-carousel/slick/slick.css";
-
 import slid1 from "@/app/assets/Images/slide1.webp";
 import slid2 from "@/app/assets/Images/slide2.webp";
 import slid3 from "@/app/assets/Images/slide3.webp";
@@ -137,7 +133,7 @@ export default function CardCarousel() {
 
   return (
     <section className="w-full pt-[15px] px-4 text-[#171717] bg-white">
-      <div className="w-full overflow-hidden">
+      <div className={`${styles.carouselRoot} w-full overflow-hidden`}>
         {/* Header */}
         <div className="text-center mb-12 mx-auto max-w-[740px]">
           <h2 className="text-[42px] text-[#000] font-bold   mb-3">
