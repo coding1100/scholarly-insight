@@ -876,6 +876,8 @@ const CustomerReviews: FC<CustomerReviewsProps> = ({
                               alt="Rating" 
                               width={150} 
                               height={40}
+                              priority
+                              fetchPriority="high"
                               className="object-contain w-[150px] h-[40px]"
                             />
                             <Image src={Verifiend} alt="Review" />
