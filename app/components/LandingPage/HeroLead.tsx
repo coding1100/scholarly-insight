@@ -74,7 +74,7 @@ const HeroLead: FC<HeroLeadProps> = ({ heroContent }) => {
   return (
     <div className="max-w-2xl">
       <h1
-        className="font-semibold max-[768px]:text-[32px] text-[50px] leading-[1.1] text-black"
+        className="font-semibold text-[32px] md:text-[50px] leading-[1.1] text-black"
       >
         {heroContent?.mainHeading ? (
           <div dangerouslySetInnerHTML={{ __html: heroContent.mainHeading }} />
