@@ -32,8 +32,20 @@ const config: Config = {
     "./app/(pages)/homework/page.tsx",
     "./app/(pages)/online-class/page.tsx",
     "./app/(pages)/online-class-2/page.tsx",
+    "./app/(pages)/AiTools/**/*.tsx",
     "./app/context/auth/AuthProvider.tsx",
-    "./app/components/**/*.tsx",
+    "./app/components/AcademicPartner/**/*.tsx",
+    "./app/components/AiLandingPage/**/*.tsx",
+    "./app/components/AiTools/**/*.tsx",
+    "./app/components/OtherLandingPages/**/*.tsx",
+    "./app/components/LandingPage/**/*.tsx",
+    "./app/components/Footer/**/*.tsx",
+    "./app/components/tools/**/*.tsx",
+    "./app/components/Footer/CopyRight.tsx",
+    "./app/components/WhatsApp/WhatsApp.tsx",
+    "./app/components/CookieConsent.tsx",
+    "./app/components/reusable/HeroWhySliderCard.tsx",
+    "./app/components/Auth/**/*.tsx",
     
     "./app/(admin)/**/*.tsx",
     "./public/**/*.html",
@@ -58,6 +70,18 @@ const config: Config = {
       "2xl": "1400px",
     },
     extend: {
+      // Container: center by default and optional padding (so "container" works without mx-auto)
+      container: {
+        center: true,
+        padding: {
+          DEFAULT: "1rem",
+          sm: "1.5rem",
+          md: "2rem",
+          lg: "2rem",
+          xl: "2rem",
+          "2xl": "2rem",
+        },
+      },
       // Override default font family to prevent Inter loading
       fontFamily: {
         sans: ['var(--font-poppins)', 'system-ui', '-apple-system', 'Segoe UI', 'Arial', 'sans-serif'],
