@@ -256,7 +256,7 @@ export default function Header() {
 
         
 
-        {/* Phone Number - Shown for special routes */}
+        {/* Phone Number - Shown for special routes (take-my-class, take-my-exam): always show number on mobile */}
         {isSpecialRoute && (
           <div className="">
             <a
@@ -272,8 +272,7 @@ export default function Header() {
                   fetchPriority="high"
                 />
               </span>
-              <span className="max-[450px]:hidden">1-716-708-1869</span>
-              <span className="min-[450px]:hidden font-semibold">Call Now</span>
+              <span>1-716-708-1869</span>
             </a>
           </div>
         )}
