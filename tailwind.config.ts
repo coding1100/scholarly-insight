@@ -69,7 +69,7 @@ const config: Config = {
     /* Layout */
     display: true,
     position: true,
-    inset: false,
+    inset: true,
     zIndex: true,
     overflow: true,
   
@@ -80,10 +80,10 @@ const config: Config = {
     /* Sizing */
     width: true,
     height: true,
-    minWidth: false,
-    minHeight: false,
+    minWidth: true,
+    minHeight: true,
     maxWidth: true,
-    maxHeight: false,
+    maxHeight: true,
   
     /* Flex only (no grid) */
     flex: true,
@@ -91,7 +91,7 @@ const config: Config = {
     alignItems: true,
     justifyContent: true,
     gap: true,
-    gridTemplateColumns: false,
+    gridTemplateColumns: true,
   
     /* Typography (minimum) */
     fontFamily: true,
@@ -100,52 +100,42 @@ const config: Config = {
     lineHeight: true,
     textAlign: true,
     textColor: true,
-    letterSpacing: false,
-    textTransform: false,
+    letterSpacing: true,
+    textTransform: true,
   
     /* Visuals */
     backgroundColor: true,
     borderWidth: true,
     borderColor: true,
     borderRadius: true,
-    boxShadow: false,
+    boxShadow: true,
     opacity: true,
   
     /* Interaction */
     cursor: true,
-    pointerEvents: false,
+    pointerEvents: true,
     userSelect: false,
   
-    /* Disable ALL effects */
-    transitionProperty: false,
-    transitionDuration: false,
-    transitionTimingFunction: false,
-    transitionDelay: false,
-    animation: false,
-    transform: false,
-    scale: false,
-    rotate: false,
-    translate: false,
   
     /* Kill everything fancy */
     aspectRatio: false,
     filter: false,
-    backdropBlur: false,
-    blur: false,
+    backdropBlur: true,
+    blur: true,
     brightness: false,
     contrast: false,
-    grayscale: false,
+    grayscale: true,
     hueRotate: false,
-    invert: false,
+    invert: true,
     saturate: false,
     sepia: false,
     mixBlendMode: false,
     isolation: false,
   
     /* UX extras */
-    scrollSnapAlign: false,
+    scrollSnapAlign: true,
     scrollSnapStop: false,
-    scrollSnapType: false,
+    scrollSnapType: true,
     touchAction: false,
     willChange: false,
   },
