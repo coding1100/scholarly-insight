@@ -2,9 +2,21 @@ import type { Config } from "tailwindcss";
 
 const config: Config = {
   darkMode: "class",
-  // Only scan dirs that exist and contain classes (smaller purge scope = smaller bundle)
+  // HOME PAGE ONLY: scan only files that render on "/" (see docs/home-page-css-inventory.md).
+  // Other routes (e.g. /contact-us, /admin, (pages)) will NOT get Tailwind styles. Add their paths here if needed.
   content: [
-    "./app/**/*.{js,ts,jsx,tsx,mdx}",
+    "./app/page.tsx",
+    "./app/layout.tsx",
+    "./app/MainLayout.tsx",
+    "./app/(pages)/HomeDataProvider.tsx",
+    "./app/context/auth/AuthProvider.tsx",
+    "./app/components/ClientScripts.tsx",
+    "./app/components/LandingPage/**/*.tsx",
+    "./app/components/Footer/Footer.tsx",
+    "./app/components/Footer/CopyRight.tsx",
+    "./app/components/WhatsApp/WhatsApp.tsx",
+    "./app/components/CookieConsent.tsx",
+    "./app/components/reusable/HeroWhySliderCard.tsx",
     "./public/**/*.html",
   ],
   // Only safelist classes that are ACTUALLY dynamically generated
