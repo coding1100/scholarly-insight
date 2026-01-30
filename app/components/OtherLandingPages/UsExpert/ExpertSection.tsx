@@ -99,7 +99,7 @@ const ExpertSection: FC<ExpertSectionProps> = ({ content }) => {
           </Slider>
 
           {/* Navigation Arrows */}
-          <div className="w-[225px] mx-auto flex justify-around mt-[5px] relative z-[9]">
+          <div className="w-[295px] mx-auto flex justify-around -mt-[31px] relative z-[9]">
             <ChevronLeft
               size={20}
               className="cursor-pointer"
