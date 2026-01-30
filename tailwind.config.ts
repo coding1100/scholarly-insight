@@ -17,6 +17,7 @@ const config: Config = {
     "./app/components/WhatsApp/WhatsApp.tsx",
     "./app/components/CookieConsent.tsx",
     "./app/components/reusable/HeroWhySliderCard.tsx",
+    "./app/(admin)/**/*.tsx",
     "./public/**/*.html",
   ],
   // Only safelist classes that are ACTUALLY dynamically generated
