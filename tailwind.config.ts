@@ -2,13 +2,9 @@ import type { Config } from "tailwindcss";
 
 const config: Config = {
   darkMode: "class",
-  // Comprehensive content paths for better CSS purging - scan all relevant files
+  // Only scan dirs that exist and contain classes (smaller purge scope = smaller bundle)
   content: [
     "./app/**/*.{js,ts,jsx,tsx,mdx}",
-    "./components/**/*.{js,ts,jsx,tsx,mdx}",
-    "./pages/**/*.{js,ts,jsx,tsx,mdx}",
-    "./src/**/*.{js,ts,jsx,tsx,mdx}",
-    // Include HTML files if any
     "./public/**/*.html",
   ],
   // Only safelist classes that are ACTUALLY dynamically generated
@@ -60,40 +56,29 @@ const config: Config = {
       },
     },
   },
-  // Disable unused core plugins to reduce CSS bundle size
+  // Only disable plugins with ZERO usage in app/ (keeps bundle small, UI intact)
   corePlugins: {
-    /* REQUIRED */
     preflight: true,
     container: true,
-  
-    /* Layout */
     display: true,
     position: true,
     inset: true,
     zIndex: true,
     overflow: true,
-  
-    /* Spacing */
     margin: true,
     padding: true,
-  
-    /* Sizing */
     width: true,
     height: true,
     minWidth: true,
     minHeight: true,
     maxWidth: true,
     maxHeight: true,
-  
-    /* Flex only (no grid) */
     flex: true,
     flexDirection: true,
     alignItems: true,
     justifyContent: true,
     gap: true,
     gridTemplateColumns: true,
-  
-    /* Typography (minimum) */
     fontFamily: true,
     fontSize: true,
     fontWeight: true,
@@ -102,40 +87,31 @@ const config: Config = {
     textColor: true,
     letterSpacing: true,
     textTransform: true,
-  
-    /* Visuals */
     backgroundColor: true,
     borderWidth: true,
     borderColor: true,
     borderRadius: true,
     boxShadow: true,
     opacity: true,
-  
-    /* Interaction */
     cursor: true,
     pointerEvents: true,
     userSelect: false,
-  
-  
-    /* Kill everything fancy */
     aspectRatio: false,
     filter: false,
-    backdropBlur: false,
-    blur: false,
+    backdropBlur: true,
+    blur: true,
     brightness: false,
     contrast: false,
-    grayscale: false,
+    grayscale: true,
     hueRotate: false,
-    invert: false,
+    invert: true,
     saturate: false,
     sepia: false,
     mixBlendMode: false,
     isolation: false,
-  
-    /* UX extras */
-    scrollSnapAlign: false,
+    scrollSnapAlign: true,
     scrollSnapStop: false,
-    scrollSnapType: false,
+    scrollSnapType: true,
     touchAction: false,
     willChange: false,
   },
