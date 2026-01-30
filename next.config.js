@@ -2,6 +2,9 @@
 const nextConfig = {
   trailingSlash: true,
 
+  // Recompile these with modern target to avoid legacy polyfills (saves ~12 KiB)
+  transpilePackages: ['react-slick', 'slick-carousel'],
+
   // Enable image optimization for better LCP
   images: {
     formats: ['image/avif', 'image/webp'],
@@ -52,7 +55,6 @@ const nextConfig = {
   // Enable experimental features for better performance
   experimental: {
     cssChunking: 'strict',
-    inlineCss: true,
     // Optimize heavy package imports - tree shake these libraries
     optimizePackageImports: [
       'lucide-react',
