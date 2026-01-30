@@ -62,19 +62,75 @@ const config: Config = {
   },
   // Disable unused core plugins to reduce CSS bundle size
   corePlugins: {
+    /* REQUIRED */
     preflight: true,
     container: true,
-    // Disable rarely used utilities on landing pages
+  
+    /* Layout */
+    display: true,
+    position: true,
+    inset: false,
+    zIndex: true,
+    overflow: true,
+  
+    /* Spacing */
+    margin: true,
+    padding: true,
+  
+    /* Sizing */
+    width: true,
+    height: true,
+    minWidth: false,
+    minHeight: false,
+    maxWidth: true,
+    maxHeight: false,
+  
+    /* Flex only (no grid) */
+    flex: true,
+    flexDirection: true,
+    alignItems: true,
+    justifyContent: true,
+    gap: true,
+    gridTemplateColumns: false,
+  
+    /* Typography (minimum) */
+    fontFamily: true,
+    fontSize: true,
+    fontWeight: true,
+    lineHeight: true,
+    textAlign: true,
+    textColor: true,
+    letterSpacing: false,
+    textTransform: false,
+  
+    /* Visuals */
+    backgroundColor: true,
+    borderWidth: true,
+    borderColor: true,
+    borderRadius: true,
+    boxShadow: false,
+    opacity: true,
+  
+    /* Interaction */
+    cursor: true,
+    pointerEvents: false,
+    userSelect: false,
+  
+    /* Disable ALL effects */
+    transitionProperty: false,
+    transitionDuration: false,
+    transitionTimingFunction: false,
+    transitionDelay: false,
+    animation: false,
+    transform: false,
+    scale: false,
+    rotate: false,
+    translate: false,
+  
+    /* Kill everything fancy */
     aspectRatio: false,
+    filter: false,
     backdropBlur: false,
-    backdropBrightness: false,
-    backdropContrast: false,
-    backdropGrayscale: false,
-    backdropHueRotate: false,
-    backdropInvert: false,
-    backdropOpacity: false,
-    backdropSaturate: false,
-    backdropSepia: false,
     blur: false,
     brightness: false,
     contrast: false,
@@ -83,11 +139,15 @@ const config: Config = {
     invert: false,
     saturate: false,
     sepia: false,
-    touchAction: false,
-    willChange: false,
+    mixBlendMode: false,
+    isolation: false,
+  
+    /* UX extras */
     scrollSnapAlign: false,
     scrollSnapStop: false,
     scrollSnapType: false,
+    touchAction: false,
+    willChange: false,
   },
   plugins: [require("tailwind-scrollbar-hide")],
 };
