@@ -2,21 +2,15 @@ import type { Config } from "tailwindcss";
 
 const config: Config = {
   darkMode: "class",
-  // HOME PAGE ONLY: scan only files that render on "/" (see docs/home-page-css-inventory.md).
-  // Other routes (e.g. /contact-us, /admin, (pages)) will NOT get Tailwind styles. Add their paths here if needed.
+  // Scan all files that render on "/" and listed (pages) routes so their Tailwind classes are in the bundle.
+  // (pages) + components globs cover: contact-us, take-my-class, tools, ai-*, guarantee pages, order, scan, thank-you, auth, etc.
   content: [
     "./app/page.tsx",
     "./app/layout.tsx",
     "./app/MainLayout.tsx",
-    "./app/(pages)/HomeDataProvider.tsx",
-    "./app/context/auth/AuthProvider.tsx",
-    "./app/components/ClientScripts.tsx",
-    "./app/components/LandingPage/**/*.tsx",
-    "./app/components/Footer/Footer.tsx",
-    "./app/components/Footer/CopyRight.tsx",
-    "./app/components/WhatsApp/WhatsApp.tsx",
-    "./app/components/CookieConsent.tsx",
-    "./app/components/reusable/HeroWhySliderCard.tsx",
+    "./app/(pages)/**/*.{tsx,jsx}",
+    "./app/components/**/*.{tsx,jsx}",
+    "./app/context/**/*.tsx",
     "./app/(admin)/**/*.tsx",
     "./public/**/*.html",
   ],

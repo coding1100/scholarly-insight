@@ -2,7 +2,7 @@
 
 This document lists **Tailwind utilities**, **custom CSS classes**, and **responsive breakpoints** used by components that render on the home route.
 
-**Tailwind config:** `tailwind.config.ts` `content` is restricted to **only these files** so the CSS bundle only includes classes used on "/". Other routes (e.g. `/contact-us`, `/admin`, pages under `(pages)`) will **not** get Tailwind styles unless you add their paths to `content`.
+**Tailwind config:** `tailwind.config.ts` `content` uses globs so the CSS bundle includes styles for "/" and all listed routes: `./app/(pages)/**/*.{tsx,jsx}` (every (pages) route and local components) and `./app/components/**/*.{tsx,jsx}` (LandingPage, AiLandingPage, AiTools, Hero, OtherLandingPages, Auth, Form, Footer, etc.). AiLandingPage and AiTools live under `app/components/`, not `app/(pages)/`.
 
 ---
 
