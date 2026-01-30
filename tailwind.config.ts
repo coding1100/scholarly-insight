@@ -34,8 +34,6 @@ const config: Config = {
     "./app/(pages)/homework/page.tsx",
     "./app/(pages)/online-class/page.tsx",
     "./app/(pages)/online-class-2/page.tsx",
-    "./app/(pages)/online-class-3/page.tsx",
-    "./app/(pages)/online-class-4/page.tsx",
     "./app/context/auth/AuthProvider.tsx",
     "./app/components/**/*.tsx",
     
