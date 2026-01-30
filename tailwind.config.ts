@@ -26,7 +26,6 @@ const config: Config = {
     "./app/(pages)/contact-us/page.tsx",
     "./app/(pages)/about-us/page.tsx",
     "./app/(pages)/faq/page.tsx",
-    "./app/(pages)/blog/page.tsx",
     "./app/(pages)/essat-too-writing/page.tsx",
     "./app/(pages)/essay-writing/page.tsx",
     "./app/(pages)/essay-writing/[subject]/page.tsx",
@@ -35,7 +34,7 @@ const config: Config = {
     "./app/(pages)/online-class/page.tsx",
     "./app/(pages)/online-class-2/page.tsx",
     "./app/context/auth/AuthProvider.tsx",
-    "./app/components/**/*.tsx",
+    
     
     "./app/(admin)/**/*.tsx",
     "./public/**/*.html",
