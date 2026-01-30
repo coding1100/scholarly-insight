@@ -2,15 +2,43 @@ import type { Config } from "tailwindcss";
 
 const config: Config = {
   darkMode: "class",
-  // Scan all files that render on "/" and listed (pages) routes so their Tailwind classes are in the bundle.
-  // (pages) + components globs cover: contact-us, take-my-class, tools, ai-*, guarantee pages, order, scan, thank-you, auth, etc.
+  // HOME PAGE ONLY: scan only files that render on "/" (see docs/home-page-css-inventory.md).
+  // Other routes (e.g. /contact-us, /admin, (pages)) will NOT get Tailwind styles. Add their paths here if needed.
   content: [
     "./app/page.tsx",
     "./app/layout.tsx",
     "./app/MainLayout.tsx",
-    "./app/(pages)/**/*.{tsx,jsx}",
-    "./app/components/**/*.{tsx,jsx}",
-    "./app/context/**/*.tsx",
+    "./app/(pages)/HomeDataProvider.tsx",
+    "./app/(pages)/take-my-class/page.tsx",
+    "./app/(pages)/take-my-class-2/page.tsx",
+    "./app/(pages)/take-my-exam/page.tsx",
+    "./app/(pages)/take-my-proctored-exam/page.tsx",
+    "./app/(pages)/tools/**/*.tsx",
+    "./app/(pages)/plagiarism-free-process/page.tsx",
+    "./app/(pages)/write-my-paper/page.tsx",
+    "./app/(pages)/plagiarism-free-process/page.tsx",
+    "./app/(pages)/on-time-delivery-guarantee/page.tsx",
+    "./app/(pages)/a-or-b-grade-guarantee/page.tsx",
+    "./app/(pages)/us-based-phd-experts/page.tsx",
+    "./app/(pages)/success-stories-and-reviews/page.tsx",
+    "./app/(pages)/terms-and-conditions/page.tsx",
+    "./app/(pages)/privacy-policy/page.tsx",
+    "./app/(pages)/contact-us/page.tsx",
+    "./app/(pages)/about-us/page.tsx",
+    "./app/(pages)/faq/page.tsx",
+    "./app/(pages)/blog/page.tsx",
+    "./app/(pages)/essat-too-writing/page.tsx",
+    "./app/(pages)/essay-writing/page.tsx",
+    "./app/(pages)/essay-writing/[subject]/page.tsx",
+    "./app/(pages)/exams/page.tsx",
+    "./app/(pages)/homework/page.tsx",
+    "./app/(pages)/online-class/page.tsx",
+    "./app/(pages)/online-class-2/page.tsx",
+    "./app/(pages)/online-class-3/page.tsx",
+    "./app/(pages)/online-class-4/page.tsx",
+    "./app/context/auth/AuthProvider.tsx",
+    "./app/components/**/*.tsx",
+    
     "./app/(admin)/**/*.tsx",
     "./public/**/*.html",
   ],
