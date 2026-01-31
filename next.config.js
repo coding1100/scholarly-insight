@@ -15,7 +15,17 @@ const nextConfig = {
     'react-loader-spinner',
     'react-spinners',
     'google-libphonenumber',
-    'react-hot-toast'
+    'react-hot-toast',
+    'react-markdown',
+    'remark-gfm',
+    'remark-math',
+    'rehype-katex',
+    'rehype-raw',
+    'jsonwebtoken',
+    'jwt-decode',
+    'mongodb',
+    'clsx',
+    'tailwind-merge'
   ],
 
   // Enable image optimization for better LCP
@@ -69,7 +79,6 @@ const nextConfig = {
   // Enable experimental features for better performance
   experimental: {
     optimizeCss: true,
-    legacyBrowsers: false,
     optimizePackageImports: [
       'lucide-react',
       'react-icons',
@@ -87,7 +96,10 @@ const nextConfig = {
       'dayjs',
       'axios',
       'jsonwebtoken',
+      'react-markdown',
       'jwt-decode',
+      'clsx',
+      'tailwind-merge'
     ],
   },
 
