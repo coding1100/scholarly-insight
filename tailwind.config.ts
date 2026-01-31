@@ -7,6 +7,8 @@ const config: Config = {
     "./app/layout.tsx",
     "./app/MainLayout.tsx",
     "./app/components/**/*.{tsx,jsx,ts,js}",
+    "./app/(pages)/**/*.{tsx,jsx,ts,js}",
+    "./app/admin/**/*.{tsx,jsx,ts,js}",
   ],
   safelist: ['animate-pulse'],
   blocklist: ['dark'],
