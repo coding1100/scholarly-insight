@@ -6,7 +6,6 @@ const nextConfig = {
   transpilePackages: [
     'react-slick',
     'slick-carousel',
-    'react-code-blocks',
     'react-international-phone',
     '@szhsin/react-accordion',
     'lucide-react',
