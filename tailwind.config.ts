@@ -8,20 +8,17 @@ const config: Config = {
     "./app/page.tsx",
     "./app/layout.tsx",
     "./app/MainLayout.tsx",
-    "./app/(pages)/**/*.{tsx,jsx}",
-    "./app/components/**/*.{tsx,jsx}",
-    "./app/(admin)/**/*.tsx",
+    "./app/(pages)/HomeDataProvider.tsx",
+    "./app/components/LandingPage/**/*.tsx",
+    "./app/components/Footer/**/*.tsx",
+    "./app/components/WhatsApp/**/*.tsx",
+    "./app/components/CookieConsent.tsx",
+    "./app/components/reusable/HeroWhySliderCard.tsx",
   ],
   // Only safelist classes that are ACTUALLY dynamically generated
-  safelist: [
-    'animate-pulse',
-    'bg-gray-100',
-    'container',
-  ],
+  safelist: ['animate-pulse'],
   // Blocklist unused Tailwind utilities to reduce CSS bundle
-  blocklist: [
-    'dark',
-  ],
+  blocklist: ['dark'],
   theme: {
     screens: {
       sm: "576px",
@@ -46,6 +43,7 @@ const config: Config = {
       },
       // Override default font family to prevent Inter loading
       fontFamily: {
+
         poppins: ['var(--font-poppins)', 'system-ui', '-apple-system', 'Segoe UI', 'Arial', 'sans-serif'],
       },
       backgroundImage: {
@@ -56,19 +54,8 @@ const config: Config = {
         heroImage: "url('/Image/bgHeroBoyGirl.webp')",
       },
       colors: {
-        primary: {
-          100: "#F7F7FD",
-          200: "#ECECFB",
-          300: "#D1D1F7",
-          400: "#565add",
-          500: "#2B1C50",
-          600: "#212529",
-        },
-        secondary: {
-          200: "#F2E0C7",
-          400: "#f97316",
-          500: "#ff641a",
-        },
+        primary: { 100: "#F7F7FD", 200: "#ECECFB", 300: "#D1D1F7", 400: "#565add", 500: "#2B1C50", 600: "#212529" },
+        secondary: { 200: "#F2E0C7", 400: "#f97316", 500: "#ff641a" },
       },
     },
   },
@@ -120,22 +107,22 @@ const config: Config = {
     blur: true,
     brightness: false,
     contrast: false,
-    grayscale: true,
+    grayscale: false,
     hueRotate: false,
-    invert: true,
+    invert: false,
     saturate: false,
     sepia: false,
     mixBlendMode: false,
     isolation: false,
-    scrollSnapAlign: true,
+    scrollSnapAlign: false,
     scrollSnapStop: false,
-    scrollSnapType: true,
+    scrollSnapType: false,
     touchAction: false,
     willChange: false,
     fontVariantNumeric: false,
     fontSmoothing: false,
     fontStyle: false,
-    textDecoration: false,
+    textDecoration: true,
     textDecorationColor: false,
     textDecorationStyle: false,
     textDecorationThickness: false,
@@ -171,11 +158,16 @@ const config: Config = {
     resize: false,
     transform: true,
     skew: false,
-    scale: false,
+    scale: true,
     rotate: true,
     translate: true,
+    backgroundOpacity: false,
+    textOpacity: false,
+    borderOpacity: false,
+    divideOpacity: false,
+    placeholderOpacity: false,
+    ringOpacity: false,
   },
   plugins: [require("tailwind-scrollbar-hide")],
 };
 export default config;
-

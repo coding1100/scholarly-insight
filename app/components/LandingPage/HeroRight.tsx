@@ -98,7 +98,7 @@ const HeroRight: FC<HeroRightProps> = ({ formBackImg2 }) => {
             src={Bg5}
             alt=""
             className=""
-            fetchPriority="high"
+            loading="lazy"
           />
         </div>
         <div className="">
