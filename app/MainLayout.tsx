@@ -9,14 +9,8 @@ const AuthProvider = dynamic(() => import("./context/auth/AuthProvider"), {
   ssr: false,
 });
 
-// Lazy load header and footer to reduce initial bundle
-const AppNav = dynamic(() => import("./components/LandingPage/Header"), {
-  ssr: true,
-});
-
-const Footer = dynamic(() => import("./components/Footer/Footer"), {
-  ssr: true,
-});
+import AppNav from "./components/LandingPage/Header";
+import Footer from "./components/Footer/Footer";
 
 const ExitPopUp = dynamic(() => import("./components/PopUpModal/ExitPopup"), {
   ssr: false,
@@ -43,7 +37,7 @@ interface MainLayoutProps {
 
 const MainLayout: FC<MainLayoutProps> = ({ children }) => {
   const pathname = usePathname();
-  
+
   // Routes where header and footer should be hidden
   const hideHeaderFooterRoutes = [
     '/take-my-class',
@@ -55,7 +49,7 @@ const MainLayout: FC<MainLayoutProps> = ({ children }) => {
     '/take-my-exam',
     '/take-my-exam/',
   ];
-  
+
   const shouldHideHeaderFooter = hideHeaderFooterRoutes.includes(pathname || '');
 
   // const [openExitPopup, setOpenExitPopup] = useState<boolean>(false);
@@ -89,7 +83,7 @@ const MainLayout: FC<MainLayoutProps> = ({ children }) => {
         onInput={handleUserInteraction}
         onMouseLeave={handleMouseLeave}
       > */}
-       <AppNav />
+      <AppNav />
       {children}
       {!shouldHideHeaderFooter && <Footer />}
       <WhatsApp />

@@ -2,8 +2,19 @@
 const nextConfig = {
   trailingSlash: true,
 
-  // Recompile these with modern target to avoid legacy polyfills (saves ~12 KiB)
-  transpilePackages: ['react-slick', 'slick-carousel'],
+  // Recompile everything modern to eliminate 12 KiB legacy polyfills
+  transpilePackages: [
+    'react-slick',
+    'slick-carousel',
+    'react-code-blocks',
+    'react-international-phone',
+    '@szhsin/react-accordion',
+    'lucide-react',
+    'dayjs',
+    'axios',
+    'react-loader-spinner',
+    'react-spinners'
+  ],
 
   // Enable image optimization for better LCP
   images: {
@@ -26,9 +37,10 @@ const nextConfig = {
 
   // Optimize production builds
   swcMinify: true,
-
-  // Reduce JS bundle size
   productionBrowserSourceMaps: false,
+  compiler: {
+    removeConsole: process.env.NODE_ENV === 'production',
+  },
 
   // Optimize CSS - Next.js automatically removes unused CSS in production
   // Combined with PurgeCSS in postcss.config.js for maximum optimization
