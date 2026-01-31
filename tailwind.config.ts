@@ -5,15 +5,8 @@ const config: Config = {
   // HOME PAGE ONLY: scan only files that render on "/" (see docs/home-page-css-inventory.md).
   // Other routes (e.g. /contact-us, /admin, (pages)) will NOT get Tailwind styles. Add their paths here if needed.
   content: [
-    "./app/page.tsx",
-    "./app/layout.tsx",
-    "./app/MainLayout.tsx",
-    "./app/(pages)/HomeDataProvider.tsx",
-    "./app/components/LandingPage/**/*.tsx",
-    "./app/components/Footer/**/*.tsx",
-    "./app/components/WhatsApp/**/*.tsx",
-    "./app/components/CookieConsent.tsx",
-    "./app/components/reusable/HeroWhySliderCard.tsx",
+    "./app/**/*.{tsx,jsx,ts,js}",
+    "./app/components/**/*.{tsx,jsx,ts,js}",
   ],
   // Only safelist classes that are ACTUALLY dynamically generated
   safelist: ['animate-pulse'],
@@ -82,6 +75,7 @@ const config: Config = {
     justifyContent: true,
     gap: true,
     gridTemplateColumns: true,
+    gridTemplateRows: true, // Re-enabled
     gridColumn: true,
     gridRow: true,
     fontFamily: true,
@@ -101,7 +95,7 @@ const config: Config = {
     cursor: true,
     pointerEvents: true,
     userSelect: false,
-    aspectRatio: false,
+    aspectRatio: true, // Re-enabled
     filter: false,
     backdropBlur: true,
     blur: true,
@@ -142,8 +136,8 @@ const config: Config = {
     outlineWidth: false,
     outlineOffset: false,
     outlineColor: false,
-    ringWidth: false,
-    ringColor: false,
+    ringWidth: true, // Re-enabled
+    ringColor: true, // Re-enabled
     ringOffsetWidth: false,
     ringOffsetColor: false,
     stroke: false,
@@ -153,7 +147,7 @@ const config: Config = {
     appearance: false,
     float: false,
     clear: false,
-    listStyleType: false,
+    listStyleType: true, // Re-enabled
     listStylePosition: false,
     resize: false,
     transform: true,

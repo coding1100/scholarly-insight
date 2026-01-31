@@ -1,7 +1,6 @@
 @tailwind base;
 @tailwind utilities;
 
-/* Optimize font loading to prevent blocking */
 :root {
     --background: #ffffff;
     --foreground: #171717
@@ -10,11 +9,14 @@
 body {
     background: #fff;
     color: var(--foreground);
-    font-family: var(--font-poppins), Arial, Helvetica, sans-serif
+    font-family: var(--font-poppins), system-ui, -apple-system, sans-serif
 }
 
-* {
-    font-family: var(--font-poppins), Arial, Helvetica, sans-serif !important
+input,
+textarea,
+button,
+select {
+    font-family: inherit
 }
 
 .no-scrollbar {
