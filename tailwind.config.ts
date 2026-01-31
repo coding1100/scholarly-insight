@@ -94,7 +94,7 @@ const config: Config = {
       },
       // Override default font family to prevent Inter loading
       fontFamily: {
-        sans: ['var(--font-poppins)', 'system-ui', '-apple-system', 'Segoe UI', 'Arial', 'sans-serif'],
+      
         poppins: ['var(--font-poppins)', 'system-ui', '-apple-system', 'Segoe UI', 'Arial', 'sans-serif'],
       },
       backgroundImage: {
@@ -123,7 +123,7 @@ const config: Config = {
   },
   // Only disable plugins with ZERO usage in app/ (keeps bundle small, UI intact)
   corePlugins: {
-    preflight: false,
+    preflight: true,
     container: true,
     display: true,
     position: true,
