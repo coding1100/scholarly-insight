@@ -56,6 +56,10 @@ const MainLayout: FC<MainLayoutProps> = ({ children }) => {
     const deferHeaderRoutes = [
         '/take-my-class',
         '/take-my-class/',
+        '/take-my-class-1',
+        '/take-my-class-1/',
+        '/take-my-class-2',
+        '/take-my-class-2/',
         '/take-my-exam',
         '/take-my-exam/',
     ];

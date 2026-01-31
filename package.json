@@ -70,20 +70,6 @@
     "tailwindcss": "^3.4.7",
     "typescript": "^5.5.4"
   },
-  "browserslist": {
-    "production": [
-      "chrome >= 111",
-      "edge >= 111",
-      "firefox >= 111",
-      "safari >= 16.4"
-    ],
-    "development": [
-      "chrome >= 111",
-      "edge >= 111",
-      "firefox >= 111",
-      "safari >= 16.4"
-    ]
-  },
   "optionalDependencies": {
     "@next/swc-win32-x64-msvc": "^14.2.5"
   }

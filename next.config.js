@@ -13,7 +13,9 @@ const nextConfig = {
     'dayjs',
     'axios',
     'react-loader-spinner',
-    'react-spinners'
+    'react-spinners',
+    'google-libphonenumber',
+    'react-hot-toast'
   ],
 
   // Enable image optimization for better LCP
@@ -66,8 +68,7 @@ const nextConfig = {
 
   // Enable experimental features for better performance
   experimental: {
-    optimizeCss: true, // Inlines critical CSS
-    // Optimize heavy package imports - tree shake these libraries
+    optimizeCss: true,
     optimizePackageImports: [
       'lucide-react',
       'react-icons',
@@ -83,6 +84,9 @@ const nextConfig = {
       'react-spinners',
       'react-loader-spinner',
       'dayjs',
+      'axios',
+      'jsonwebtoken',
+      'jwt-decode',
     ],
   },
 
