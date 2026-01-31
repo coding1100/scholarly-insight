@@ -20,12 +20,16 @@ export default function DeferUntilInteractive({
   const [ready, setReady] = useState(false);
 
   useEffect(() => {
-    // Force a 2-second delay to ensure the Hero section is the only focus for LCP
-    const timer = setTimeout(() => {
-      setReady(true);
-    }, 2000);
+    if (typeof window === "undefined") return;
 
-    return () => clearTimeout(timer);
+    const start = () => setReady(true);
+
+    if ("requestIdleCallback" in window) {
+      (window as any).requestIdleCallback(start, { timeout: 3000 });
+    } else {
+      // Fallback: schedule right after first paint
+      setTimeout(start, 0);
+    }
   }, []);
 
   if (!ready) return null;

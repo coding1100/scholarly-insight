@@ -80,12 +80,17 @@ export default function BelowFoldLanding({ children }: BelowFoldLandingProps) {
   const [ready, setReady] = useState(false);
 
   useEffect(() => {
-    // Defer all below-the-fold content for 2 seconds to maximize LCP
-    const timer = setTimeout(() => {
-      setReady(true);
-    }, 2000);
+    // Defer until after main thread is idle to be extra safe for LCP
+    if (typeof window === "undefined") return;
 
-    return () => clearTimeout(timer);
+    const start = () => setReady(true);
+
+    if ("requestIdleCallback" in window) {
+      (window as any).requestIdleCallback(start, { timeout: 3000 });
+    } else {
+      // Fallback: run soon after first paint
+      setTimeout(start, 0);
+    }
   }, []);
 
   if (!ready) return null;
