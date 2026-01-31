@@ -101,7 +101,7 @@ const config: Config = {
         },
       },
       fontFamily: {
-        poppins: ['var(--font-poppins)', 'system-ui', '-apple-system', 'Segoe UI', 'Arial', 'sans-serif'],
+        poppins: ['var(--font-poppins)'],
       },
       backgroundImage: {
         "gradient-radial": "radial-gradient(var(--tw-gradient-stops))",
