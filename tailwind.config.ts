@@ -200,7 +200,7 @@ const config: Config = {
     ringOffsetColor: false,
     stroke: false,
     strokeWidth: false,
-    fill: false,
+    fill: true,
     tableLayout: false,
     appearance: false,
     float: false,
