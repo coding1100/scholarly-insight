@@ -123,7 +123,7 @@ const config: Config = {
   },
   // Only disable plugins with ZERO usage in app/ (keeps bundle small, UI intact)
   corePlugins: {
-    preflight: true,
+    preflight: false,
     container: true,
     display: true,
     position: true,
