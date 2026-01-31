@@ -69,6 +69,7 @@ const nextConfig = {
   // Enable experimental features for better performance
   experimental: {
     optimizeCss: true,
+    legacyBrowsers: false,
     optimizePackageImports: [
       'lucide-react',
       'react-icons',
