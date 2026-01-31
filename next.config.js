@@ -54,7 +54,7 @@ const nextConfig = {
 
   // Enable experimental features for better performance
   experimental: {
-    cssChunking: 'strict',
+    optimizeCss: true, // Inlines critical CSS
     // Optimize heavy package imports - tree shake these libraries
     optimizePackageImports: [
       'lucide-react',

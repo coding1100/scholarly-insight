@@ -2,15 +2,11 @@ import type { Config } from "tailwindcss";
 
 const config: Config = {
   darkMode: "class",
-  // HOME PAGE ONLY: scan only files that render on "/" (see docs/home-page-css-inventory.md).
-  // Other routes (e.g. /contact-us, /admin, (pages)) will NOT get Tailwind styles. Add their paths here if needed.
   content: [
     "./app/**/*.{tsx,jsx,ts,js}",
     "./app/components/**/*.{tsx,jsx,ts,js}",
   ],
-  // Only safelist classes that are ACTUALLY dynamically generated
   safelist: ['animate-pulse'],
-  // Blocklist unused Tailwind utilities to reduce CSS bundle
   blocklist: ['dark'],
   theme: {
     screens: {
@@ -21,8 +17,38 @@ const config: Config = {
       xl: "1200px",
       "2xl": "1400px",
     },
+    colors: {
+      transparent: 'transparent',
+      current: 'currentColor',
+      white: '#ffffff',
+      black: '#000000',
+      primary: {
+        100: "#F7F7FD",
+        200: "#ECECFB",
+        300: "#D1D1F7",
+        400: "#565add",
+        500: "#2B1C50",
+        600: "#212529"
+      },
+      secondary: {
+        200: "#F2E0C7",
+        400: "#f97316",
+        500: "#ff641a"
+      },
+      gray: {
+        50: '#f9fafb',
+        100: '#f3f4f6',
+        200: '#e5e7eb',
+        300: '#d1d5db',
+        400: '#9ca3af',
+        500: '#6b7280',
+        600: '#4b5563',
+        700: '#374151',
+        800: '#1f2937',
+        900: '#111827',
+      },
+    },
     extend: {
-      // Container: center by default and optional padding (so "container" works without mx-auto)
       container: {
         center: true,
         padding: {
@@ -34,25 +60,17 @@ const config: Config = {
           "2xl": "2rem",
         },
       },
-      // Override default font family to prevent Inter loading
       fontFamily: {
-
         poppins: ['var(--font-poppins)', 'system-ui', '-apple-system', 'Segoe UI', 'Arial', 'sans-serif'],
       },
       backgroundImage: {
         "gradient-radial": "radial-gradient(var(--tw-gradient-stops))",
-        "gradient-conic":
-          "conic-gradient(from 180deg at 50% 50%, var(--tw-gradient-stops))",
+        "gradient-conic": "conic-gradient(from 180deg at 50% 50%, var(--tw-gradient-stops))",
         sample: "url('/Image/sampleBg.webp')",
         heroImage: "url('/Image/bgHeroBoyGirl.webp')",
       },
-      colors: {
-        primary: { 100: "#F7F7FD", 200: "#ECECFB", 300: "#D1D1F7", 400: "#565add", 500: "#2B1C50", 600: "#212529" },
-        secondary: { 200: "#F2E0C7", 400: "#f97316", 500: "#ff641a" },
-      },
     },
   },
-  // Only disable plugins with ZERO usage in app/ (keeps bundle small, UI intact)
   corePlugins: {
     preflight: true,
     container: true,
@@ -75,7 +93,7 @@ const config: Config = {
     justifyContent: true,
     gap: true,
     gridTemplateColumns: true,
-    gridTemplateRows: true, // Re-enabled
+    gridTemplateRows: false,
     gridColumn: true,
     gridRow: true,
     fontFamily: true,
@@ -95,7 +113,7 @@ const config: Config = {
     cursor: true,
     pointerEvents: true,
     userSelect: false,
-    aspectRatio: true, // Re-enabled
+    aspectRatio: false,
     filter: false,
     backdropBlur: true,
     blur: true,
@@ -136,8 +154,8 @@ const config: Config = {
     outlineWidth: false,
     outlineOffset: false,
     outlineColor: false,
-    ringWidth: true, // Re-enabled
-    ringColor: true, // Re-enabled
+    ringWidth: false,
+    ringColor: false,
     ringOffsetWidth: false,
     ringOffsetColor: false,
     stroke: false,
@@ -147,7 +165,7 @@ const config: Config = {
     appearance: false,
     float: false,
     clear: false,
-    listStyleType: true, // Re-enabled
+    listStyleType: true,
     listStylePosition: false,
     resize: false,
     transform: true,
