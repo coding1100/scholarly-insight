@@ -33,7 +33,9 @@ export default function RootLayout({
     <html lang="en" className={poppins.variable}>
       <head>
         {/* Resource Hints for better performance */}
-
+        <link rel="dns-prefetch" href="https://www.googletagmanager.com" />
+        <link rel="dns-prefetch" href="https://cdn.livechatinc.com" />
+        <link rel="preconnect" href="https://www.googletagmanager.com" crossOrigin="anonymous" />
         <link rel="preconnect" href="https://cdn.livechatinc.com" crossOrigin="anonymous" />
 
         {/* Force HTTPS for all resources in production only */}
