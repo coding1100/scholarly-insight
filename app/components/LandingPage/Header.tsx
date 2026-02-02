@@ -6,7 +6,7 @@ import { usePathname } from "next/navigation";
 import megaMenuImage from "@/app/assets/Images/mega-menu-image.webp";
 import Image from "next/image";
 import LogoSmall from "@/app/assets/Images/logoSmall.png";
-import LogoNormal from "@/app/assets/Images/logo.png";
+import LogoNormal from "@/app/assets/Images/logo.svg";
 import Phone from "@/app/assets/Icons/phone.webp";
 
 const Star: React.FC<{ className?: string }> = ({ className }) => (
@@ -260,9 +260,9 @@ export default function Header() {
           <Image
             src={LogoNormal}
             alt="Scholarly Help"
-            className="max-w-[142px]"
-            width={142}
-            height={40}
+            className=""
+            width={138}
+            height={36}
             priority
             fetchPriority="high"
           />

@@ -14,7 +14,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { FC, useEffect, useState, useRef } from "react";
 import CopyRight from "./CopyRight";
-import LogoNormal from "@/app/assets/Images/logo.png";
+import LogoNormal from "@/app/assets/Images/logo.svg";
 import cellPhone from "@/app/assets/Images/cellphone.png";
 import { usePathname } from "next/navigation";
 import {
@@ -108,8 +108,8 @@ const Footer: FC<FooterProps> = ({ }) => {
                   src={LogoNormal}
                   alt="Scholarly Help"
                   className="max-w-[142px] min-w-[142px]"
-                  width={142}
-
+                  width={138}
+                  height={36}
                   priority
                 />
               </Link>
