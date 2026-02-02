@@ -9,7 +9,9 @@ const AuthProvider = dynamic(() => import("./context/auth/AuthProvider"), {
     ssr: false,
 });
 
-import AppNav from "./components/LandingPage/Header";
+const AppNav = dynamic(() => import("./components/LandingPage/Header"), {
+    ssr: true,
+});
 import Footer from "./components/Footer/Footer";
 
 const ExitPopUp = dynamic(() => import("./components/PopUpModal/ExitPopup"), {
@@ -88,15 +90,19 @@ const MainLayout: FC<MainLayoutProps> = ({ children }) => {
         window.addEventListener('touchstart', handleInteraction, { passive: true });
         window.addEventListener('keydown', handleInteraction, { passive: true });
 
-        // Fallback: Show header after 1.5 seconds if no interaction occurs
+        // Fallback removed to strictly load after interaction as requested
+        // Or kept with longer delay? User said "only load after page interaction"
+        // I will comment it out or remove it. 
+        /*
         const timer = setTimeout(() => {
-            setHeaderVisible(true);
-            removeEventListeners();
+             setHeaderVisible(true);
+             removeEventListeners();
         }, 1500);
+        */
 
         return () => {
             removeEventListeners();
-            clearTimeout(timer);
+            // clearTimeout(timer);
         };
     }, [shouldDeferHeader, headerVisible]);
 
