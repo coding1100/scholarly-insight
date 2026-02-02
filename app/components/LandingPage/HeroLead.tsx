@@ -63,8 +63,6 @@ const HeroLead: FC<HeroLeadProps> = ({ heroContent }) => {
 
   // Routes where buttons should be hidden
   const buttonHiddenRoutes = [
-    '/take-my-class',
-    '/take-my-class/',
     '/take-my-exam',
     '/take-my-exam/',
   ];
@@ -163,22 +161,26 @@ const HeroLead: FC<HeroLeadProps> = ({ heroContent }) => {
             </button>
           )}
 
-          {heroContent?.btn2Url ? (
-            <Link
-              href={heroContent.btn2Url}
-              className="rounded-md px-5 py-3 sm:text-[15px] text-sm font-medium text-white shadow-sm transition-colors cursor-pointer max-[768px]:flex-grow  max-[768px]:text-center"
-              style={{ backgroundColor: SECONDARY_BG }}
-            >
-              {heroContent?.btn2 ? heroContent.btn2 : "Pass My Exam"}
-            </Link>
-          ) : (
-            <button
-              type="button"
-              className="rounded-md px-5 py-3 sm:text-[15px] text-sm font-medium text-white shadow-sm transition-colors transition-colors"
-              style={{ backgroundColor: SECONDARY_BG }}
-            >
-              {heroContent?.btn2 ? heroContent.btn2 : "Pass My Exam"}
-            </button>
+          {(!pathname?.includes('/take-my-class')) && (
+            <>
+              {heroContent?.btn2Url ? (
+                <Link
+                  href={heroContent.btn2Url}
+                  className="rounded-md px-5 py-3 sm:text-[15px] text-sm font-medium text-white shadow-sm transition-colors cursor-pointer max-[768px]:flex-grow  max-[768px]:text-center"
+                  style={{ backgroundColor: SECONDARY_BG }}
+                >
+                  {heroContent?.btn2 ? heroContent.btn2 : "Pass My Exam"}
+                </Link>
+              ) : (
+                <button
+                  type="button"
+                  className="rounded-md px-5 py-3 sm:text-[15px] text-sm font-medium text-white shadow-sm transition-colors transition-colors"
+                  style={{ backgroundColor: SECONDARY_BG }}
+                >
+                  {heroContent?.btn2 ? heroContent.btn2 : "Pass My Exam"}
+                </button>
+              )}
+            </>
           )}
         </div>
       )}

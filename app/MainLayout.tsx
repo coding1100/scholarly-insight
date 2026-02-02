@@ -88,7 +88,16 @@ const MainLayout: FC<MainLayoutProps> = ({ children }) => {
         window.addEventListener('touchstart', handleInteraction, { passive: true });
         window.addEventListener('keydown', handleInteraction, { passive: true });
 
-        return removeEventListeners;
+        // Fallback: Show header after 1.5 seconds if no interaction occurs
+        const timer = setTimeout(() => {
+            setHeaderVisible(true);
+            removeEventListeners();
+        }, 1500);
+
+        return () => {
+            removeEventListeners();
+            clearTimeout(timer);
+        };
     }, [shouldDeferHeader, headerVisible]);
 
     return (
