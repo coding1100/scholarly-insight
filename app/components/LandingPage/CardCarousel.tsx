@@ -180,7 +180,7 @@ export default function CardCarousel() {
                       alt={card.title}
                       width={536}
                       height={553}
-                      className="object-cover w-[300px] h-[330px] rounded-lg mx-auto relative top-[-80px] max-[768px]:max-w-[300px] max-[768px]:max-h-[310px]"
+                      className="object-cover w-[290px] h-[310px] rounded-lg mx-auto relative top-[-80px] max-[768px]:w-[290px] max-[768px]:h-[310px]"
                     />
                   </div>
                   <div className="flex flex-col h-full justify-center relative top-[-35px]">
