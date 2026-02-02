@@ -91,19 +91,15 @@ const MainLayout: FC<MainLayoutProps> = ({ children }) => {
         window.addEventListener('touchstart', handleInteraction, { passive: true });
         window.addEventListener('keydown', handleInteraction, { passive: true });
 
-        // Fallback removed to strictly load after interaction as requested
-        // Or kept with longer delay? User said "only load after page interaction"
-        // I will comment it out or remove it. 
-        /*
+        // Fallback: Show header after 2.5 seconds if no interaction occurs
         const timer = setTimeout(() => {
-             setHeaderVisible(true);
-             removeEventListeners();
-        }, 1500);
-        */
+            setHeaderVisible(true);
+            removeEventListeners();
+        }, 2500);
 
         return () => {
             removeEventListeners();
-            // clearTimeout(timer);
+            clearTimeout(timer);
         };
     }, [shouldDeferHeader, headerVisible]);
 
