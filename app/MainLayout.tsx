@@ -10,8 +10,9 @@ const AuthProvider = dynamic(() => import("./context/auth/AuthProvider"), {
 });
 
 const AppNav = dynamic(() => import("./components/LandingPage/Header"), {
-    ssr: true,
+    ssr: false,
 });
+
 import Footer from "./components/Footer/Footer";
 
 const ExitPopUp = dynamic(() => import("./components/PopUpModal/ExitPopup"), {
