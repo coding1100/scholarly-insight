@@ -281,7 +281,7 @@ const HeroForm: FC<ZohoForm2Props> = ({
           />
         ) : (
           <Image
-            src="/images/Hero-Group-195.webp"
+            src={FormBackImg}
             alt="Academic success illustration"
             width={526}
             height={551}
@@ -506,7 +506,7 @@ const HeroForm: FC<ZohoForm2Props> = ({
         />
       ) : (
         <Image
-          src="/images/Hero-Group-195.webp"
+          src={FormBackImg}
           alt="Academic success illustration"
           width={526}
           height={551}
