@@ -508,11 +508,11 @@ const HeroForm: FC<ZohoForm2Props> = ({
         <Image
           src={FormBackImg}
           alt="Academic success illustration"
-          width={526}
-          height={551}
-          className="cus-img absolute min-[1200px]:right-[-258px] -z-[1] max-[1025px]:hidden min-[1100px]:right-[-208px] min-[1150px]:right-[-150px]"
+          width={400}
+          height={400}
+          className="cus-img absolute max-w-[400px] min-[1200px]:right-[-258px] -z-[1] max-[1025px]:hidden min-[1100px]:right-[-208px] min-[1150px]:right-[-150px]"
           priority
-
+          fetchPriority="high"
         />
       )}
       <div className="w-full mx-auto cus-div">
