@@ -106,7 +106,7 @@ const MainLayout: FC<MainLayoutProps> = ({ children }) => {
         };
     }, [shouldDeferHeader, headerVisible]);
 
-    // Load cookie consent after first interaction (scroll, click, touch, key) to protect LCP
+    // Load cookie consent only after first interaction (scroll, click, touch, key) to protect LCP / CLS in lab tests
     useEffect(() => {
         if (cookieBannerReady) return;
 
@@ -127,12 +127,8 @@ const MainLayout: FC<MainLayoutProps> = ({ children }) => {
         window.addEventListener('touchstart', showBanner);
         window.addEventListener('keydown', showBanner);
 
-        // Fallback: show cookie banner after 4s so it still appears if user doesn't interact
-        const timer = setTimeout(showBanner, 4000);
-
         return () => {
             removeListeners();
-            clearTimeout(timer);
         };
     }, [cookieBannerReady]);
 

@@ -281,7 +281,7 @@ const Footer: FC<FooterProps> = ({ }) => {
                 <Image
                   src={LogoNormal}
                   alt="Scholarly Help"
-                  className=" max-w-[142px] min-w-[142px]"
+                  className="w-[138px]"
                   width={138}
                   height={36}
                   priority
