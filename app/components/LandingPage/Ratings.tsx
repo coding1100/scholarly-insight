@@ -23,7 +23,7 @@ export default function ReviewRatings() {
               width={56}
               height={56}
               fetchPriority="high"
-              className="w-full h-auto"
+              className="w-[56px] h-auto"
             />
           </div>
           <div>
@@ -53,7 +53,7 @@ export default function ReviewRatings() {
               width={56}
               height={56}
               fetchPriority="high"
-              className="w-full h-auto"
+              className="w-[56px] h-auto"
             />
           </div>
           <div>
@@ -83,7 +83,7 @@ export default function ReviewRatings() {
               width={56}
               height={56}
               fetchPriority="high"
-              className="w-full h-auto"
+              className="w-[56px] h-auto"
             />
           </div>
           <div>
@@ -113,7 +113,7 @@ export default function ReviewRatings() {
               width={56}
               height={56}
               fetchPriority="high"
-              className="w-full h-auto"
+              className="w-[56px] h-auto"
             />
           </div>
           <div>
