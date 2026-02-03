@@ -98,7 +98,7 @@ const Footer: FC<FooterProps> = ({ }) => {
     return;
   } else if (hidelinksfooter) {
     return (
-      <div ref={footerRef}>
+      <div >
         <div className="bg-primary-200 md:flex justify-center py-14">
           <div className=" w-full max-w-7xl mx-auto md:flex justify-between gap-6 max-[768px]:px-10 text-primary-600">
             <div className="md:max-w-[372px]">
@@ -114,7 +114,7 @@ const Footer: FC<FooterProps> = ({ }) => {
                 />
               </Link>
               <div className="mt-3">
-                <p className="leading-5 ">
+                <p className="leading-5 w-full">
                   Scholarly Help delivers academic writing services. Our team of
                   qualified subject experts can help you with your challenging
                   online classes, homework, assignments, quizzes, and exams
@@ -272,7 +272,7 @@ const Footer: FC<FooterProps> = ({ }) => {
     );
   } else {
     return (
-      <div ref={footerRef}>
+      <div >
         <div className="bg-primary-200 md:flex justify-center py-14">
           <div className="w-full max-w-7xl mx-auto md:flex justify-between gap-6 max-[768px]:px-10 text-primary-600">
             <div className="md:max-w-[372px]">
@@ -288,7 +288,7 @@ const Footer: FC<FooterProps> = ({ }) => {
                 />
               </Link>
               <div className="mt-3">
-                <p className="leading-5 ">
+                <p className="leading-5 w-full">
                   Scholarly Help delivers academic writing services. Our team of
                   qualified subject experts can help you with your challenging
                   online classes
