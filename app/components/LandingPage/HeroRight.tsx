@@ -43,7 +43,7 @@ const HeroRight: FC<HeroRightProps> = ({ formBackImg2 }) => {
             alt=""
             width={80}
             height={80}
-            className="absolute -left-[60px] top-[130px] opacity-50"
+            className="absolute w-[80px] h-[80px] -left-[60px] top-[130px] opacity-50"
             loading="lazy"
           />
           <Image
@@ -51,7 +51,7 @@ const HeroRight: FC<HeroRightProps> = ({ formBackImg2 }) => {
             alt=""
             width={80}
             height={80}
-            className="absolute -left-[60px] -top-10 opacity-50"
+            className="absolute w-[80px] h-[80px] -left-[60px] -top-10 opacity-50"
             loading="lazy"
           />
           <Image
@@ -59,7 +59,7 @@ const HeroRight: FC<HeroRightProps> = ({ formBackImg2 }) => {
             alt=""
             width={80}
             height={80}
-            className="absolute -left-[60px] top-[300px] opacity-50"
+            className="absolute w-[80px] h-[80px] -left-[60px] top-[300px] opacity-50"
             loading="lazy"
           />
           <Image
@@ -67,7 +67,7 @@ const HeroRight: FC<HeroRightProps> = ({ formBackImg2 }) => {
             width={80}
             height={80}
             alt=""
-            className="absolute left-28 -top-16 opacity-50"
+            className="absolute w-[80px] h-[80px] left-28 -top-16 opacity-50"
             loading="lazy"
           />
         </div>
