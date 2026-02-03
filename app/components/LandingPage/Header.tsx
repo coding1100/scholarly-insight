@@ -285,7 +285,7 @@ export default function Header() {
         {/* Rating Stars - Only for /take-my-class/ */}
         {isTakeMyClass && (
           <div className="max-[768px]:hidden md:flex flex-col items-center">
-            <div className="flex">
+            <div className="flex items-center">
               {[...Array(5)].map((_, i) => (
                 <Star
                   key={i}
