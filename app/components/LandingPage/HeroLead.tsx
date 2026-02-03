@@ -63,6 +63,8 @@ const HeroLead: FC<HeroLeadProps> = ({ heroContent }) => {
 
   // Routes where buttons should be hidden
   const buttonHiddenRoutes = [
+    '/take-my-class',
+    '/take-my-class/',
     '/take-my-exam',
     '/take-my-exam/',
   ];
@@ -72,7 +74,7 @@ const HeroLead: FC<HeroLeadProps> = ({ heroContent }) => {
   return (
     <div className="max-w-2xl">
       <h1
-        className="font-semibold text-[32px] md:text-[50px] leading-[1.1] text-black"
+        className="font-semibold text-[30px] md:text-[48px] leading-[1.1] text-black"
       >
         {heroContent?.mainHeading ? (
           <div dangerouslySetInnerHTML={{ __html: heroContent.mainHeading }} />

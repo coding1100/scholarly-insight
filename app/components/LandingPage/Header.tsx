@@ -293,9 +293,10 @@ export default function Header() {
                 />
               ))}
               <span className="text-sm font-semibold text-gray-700 ml-2">4.9/5</span>
+              <span className="text-sm ml-4">(1,000+ Satisfied Students)</span>
             </div>
 
-            <span className="text-sm text-gray-500">(1,000+ Satisfied Students)</span>
+
           </div>
         )}
 
@@ -427,10 +428,9 @@ export default function Header() {
                 className="w-5 h-5 md:w-5 md:h-5 text-[#facc15] fill-[#facc15]"
               />
             ))}
-            <span className="text-sm font-semibold text-gray-700 ml-2">"Saved my GPA!"</span>
+            <span className="text-sm font-semibold text-gray-700 ml-2">4.9/5</span>
+            <span className="text-sm ml-4">(1,000+ Satisfied Students)</span>
           </div>
-
-          <span className="text-sm text-gray-500">(Rated 4.9 by 1,000+ Students)</span>
         </div>
       )}
       {/* Mobile Navigation - full-width dropdown under header with smooth transition and outside click close */}
