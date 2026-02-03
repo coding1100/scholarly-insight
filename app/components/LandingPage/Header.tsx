@@ -284,12 +284,12 @@ export default function Header() {
 
         {/* Rating Stars - Only for /take-my-class/ */}
         {isTakeMyClass && (
-          <div className="hidden md:flex flex-col items-center">
+          <div className="max-[768px]:hidden md:flex flex-col items-center">
             <div className="flex">
               {[...Array(5)].map((_, i) => (
                 <Star
                   key={i}
-                  className="w-3 h-3 md:w-5 md:h-5 text-[#facc15] fill-[#facc15]"
+                  className="w-6 h-6 text-[#facc15] fill-[#facc15]"
                 />
               ))}
               <span className="text-sm font-semibold text-gray-700 ml-2">4.9/5</span>
@@ -425,7 +425,7 @@ export default function Header() {
             {[...Array(5)].map((_, i) => (
               <Star
                 key={i}
-                className="w-5 h-5 md:w-5 md:h-5 text-[#facc15] fill-[#facc15]"
+                className="w-5 h-5 text-[#facc15] fill-[#facc15]"
               />
             ))}
             <span className="text-sm font-semibold text-gray-700 ml-2">4.9/5</span>
