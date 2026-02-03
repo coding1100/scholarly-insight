@@ -70,6 +70,9 @@ const MainLayout: FC<MainLayoutProps> = ({ children }) => {
     const shouldDeferHeader = deferHeaderRoutes.includes(pathname || '');
     const [headerVisible, setHeaderVisible] = useState(!shouldDeferHeader);
 
+    // Defer cookie consent until after interaction so LCP is not affected
+    const [cookieBannerReady, setCookieBannerReady] = useState(false);
+
     // Detect user interaction to load deferred header
     useEffect(() => {
         if (!shouldDeferHeader || headerVisible) return;
@@ -103,13 +106,43 @@ const MainLayout: FC<MainLayoutProps> = ({ children }) => {
         };
     }, [shouldDeferHeader, headerVisible]);
 
+    // Load cookie consent after first interaction (scroll, click, touch, key) to protect LCP
+    useEffect(() => {
+        if (cookieBannerReady) return;
+
+        const showBanner = () => {
+            setCookieBannerReady(true);
+            removeListeners();
+        };
+
+        const removeListeners = () => {
+            window.removeEventListener('scroll', showBanner);
+            window.removeEventListener('mousedown', showBanner);
+            window.removeEventListener('touchstart', showBanner);
+            window.removeEventListener('keydown', showBanner);
+        };
+
+        window.addEventListener('scroll', showBanner, { passive: true });
+        window.addEventListener('mousedown', showBanner);
+        window.addEventListener('touchstart', showBanner);
+        window.addEventListener('keydown', showBanner);
+
+        // Fallback: show cookie banner after 4s so it still appears if user doesn't interact
+        const timer = setTimeout(showBanner, 4000);
+
+        return () => {
+            removeListeners();
+            clearTimeout(timer);
+        };
+    }, [cookieBannerReady]);
+
     return (
         <AuthProvider>
             {headerVisible && <AppNav />}
             {children}
             {!shouldHideHeaderFooter && <Footer />}
             <WhatsApp />
-            <CookieBanner />
+            {cookieBannerReady && <CookieBanner />}
             {/* <ExitPopUp
           open={openExitPopup}
           handleClose={() => setOpenExitPopup(false)}
