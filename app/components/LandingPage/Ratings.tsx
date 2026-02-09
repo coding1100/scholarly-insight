@@ -22,7 +22,7 @@ export default function ReviewRatings() {
               alt="SiteJabber"
               width={56}
               height={56}
-              fetchPriority="high"
+              loading="lazy"
               className="w-[56px] h-auto"
             />
           </div>
@@ -52,7 +52,7 @@ export default function ReviewRatings() {
               alt="Google Reviews"
               width={56}
               height={56}
-              fetchPriority="high"
+              loading="lazy"
               className="w-[56px] h-auto"
             />
           </div>
@@ -82,7 +82,7 @@ export default function ReviewRatings() {
               alt="Trustpilot"
               width={56}
               height={56}
-              fetchPriority="high"
+              loading="lazy"
               className="w-[56px] h-auto"
             />
           </div>
@@ -112,7 +112,7 @@ export default function ReviewRatings() {
               alt="Review.io"
               width={56}
               height={56}
-              fetchPriority="high"
+              loading="lazy"
               className="w-[56px] h-auto"
             />
           </div>

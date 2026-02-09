@@ -116,5 +116,5 @@ select {
 @font-face {
     font-family: slick;
     src: local('');
-    font-display: block
+    font-display: swap
 }

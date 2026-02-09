@@ -3,16 +3,11 @@
 import React, { FC } from "react";
 import Image, { StaticImageData } from "next/image";
 import HeroForm from "./HeroForm"; // Direct import for LCP - no dynamic loading
-import Illustration from "@/app/assets/Images/Hero-Group-195.webp";
 import Bg1 from "@/app/assets/Images/Hero-b-1.webp";
 import Bg2 from "@/app/assets/Images/Hero-b-2.webp";
 import Bg3 from "@/app/assets/Images/Hero-b-3.webp";
 import Bg4 from "@/app/assets/Images/Hero-b-4.webp";
 import Bg5 from "@/app/assets/Images/rev-icon.svg";
-import Heart from "@/app/assets/Images/Hero-b-Heart.png";
-import Update from "@/app/assets/Images/Hero-b-Update.png";
-import Discount from "@/app/assets/Images/Hero-b-Discount.png";
-import TomIcon from "@/app/assets/Icons/tom.png";
 
 const Star: React.FC = () => (
   <svg
