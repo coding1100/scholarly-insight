@@ -92,7 +92,7 @@ export default function BelowFoldLanding({ children }: BelowFoldLandingProps) {
     };
 
     if ("requestIdleCallback" in window) {
-      (window as any).requestIdleCallback(start, { timeout: 1500 });
+      (window as any).requestIdleCallback(start, { timeout: 400 });
     } else {
       // Fallback: run soon after first paint
       setTimeout(start, 100);
