@@ -87,11 +87,11 @@ export default function RootLayout({
                   // Use requestIdleCallback for maximum web vitals protection
                   if ('requestIdleCallback' in window) {
                     requestIdleCallback(function() {
-                      setTimeout(initGTM, 3000); // 5 second delay after idle
-                    }, { timeout: 3000 }); // Fallback after 8 seconds max
+                      setTimeout(initGTM, 5000); // 5 second delay after idle
+                    }, { timeout: 8000 }); // Fallback after 8 seconds max
                   } else {
                     // Fallback for browsers without requestIdleCallback
-                    setTimeout(initGTM, 3000);
+                    setTimeout(initGTM, 8000);
                   }
                 }
                 
@@ -99,7 +99,7 @@ export default function RootLayout({
                 var interactionEvents = ['scroll', 'mousedown', 'touchstart', 'keydown'];
                 var interactionHandler = function() {
                   if (!gtmLoaded) {
-                    setTimeout(initGTM, 2000);
+                    setTimeout(initGTM, 3000);
                     interactionEvents.forEach(function(event) {
                       window.removeEventListener(event, interactionHandler);
                     });

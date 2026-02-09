@@ -27,8 +27,8 @@ export async function GET(request: NextRequest) {
     const slug = searchParams.get('slug');
 
     const client = new MongoClient(databaseUrl, {
-      serverSelectionTimeoutMS: 3000,
-      connectTimeoutMS: 4000,
+      serverSelectionTimeoutMS: 5000,
+      connectTimeoutMS: 10000,
     });
     
     await client.connect();

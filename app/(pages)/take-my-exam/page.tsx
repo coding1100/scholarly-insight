@@ -17,8 +17,8 @@ async function fetchTakeMyExamData() {
 
     const { MongoClient } = await import('mongodb');
     const client = new MongoClient(databaseUrl, {
-      serverSelectionTimeoutMS: 3000,
-      connectTimeoutMS: 4000,
+      serverSelectionTimeoutMS: 5000,
+      connectTimeoutMS: 10000,
       maxPoolSize: 1,
     });
     
