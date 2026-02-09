@@ -90,20 +90,12 @@ const HeroForm: FC<ZohoForm2Props> = ({
   }, []);
 
   useEffect(() => {
-    let timeout: ReturnType<typeof setTimeout>;
     const checkMobile = () => {
-      clearTimeout(timeout);
-      timeout = setTimeout(() => {
-        setIsMobile(window.innerWidth < 768);
-      }, 150);
+      setIsMobile(window.innerWidth < 768);
     };
-    // Initial check (no debounce needed)
-    setIsMobile(window.innerWidth < 768);
+    checkMobile();
     window.addEventListener("resize", checkMobile);
-    return () => {
-      clearTimeout(timeout);
-      window.removeEventListener("resize", checkMobile);
-    };
+    return () => window.removeEventListener("resize", checkMobile);
   }, []);
 
   useEffect(() => {
@@ -284,7 +276,8 @@ const HeroForm: FC<ZohoForm2Props> = ({
             width={526}
             height={551}
             className="min-[1200px]:max-w-[450px] max-w-[450px] cus-img absolute min-[1200px]:right-[-280px] min-[1200px]:top-[-83px] -z-[1] max-[1025px]:hidden min-[1000px]:right-[-272px] min-[1000px]:top-[-83px]"
-            loading="lazy"
+            priority
+            fetchPriority="high"
           />
         ) : (
           <Image
@@ -293,7 +286,8 @@ const HeroForm: FC<ZohoForm2Props> = ({
             width={526}
             height={551}
             className="cus-img absolute min-[1200px]:right-[-258px] -z-[1] max-[1025px]:hidden min-[1100px]:right-[-208px] min-[1150px]:right-[-150px]"
-            loading="lazy"
+            priority
+            fetchPriority="high"
           />
         )}
         <div className="max-w-[600px] mx-auto cus-div">
@@ -507,7 +501,8 @@ const HeroForm: FC<ZohoForm2Props> = ({
           width={526}
           height={551}
           className="min-[1200px]:max-w-[450px] max-w-[450px] cus-img absolute min-[1200px]:right-[-280px] min-[1200px]:top-[-83px] -z-[1] max-[1025px]:hidden min-[1000px]:right-[-272px] min-[1000px]:top-[-120px]"
-          loading="lazy"
+          priority
+          fetchPriority="high"
         />
       ) : (
         <Image
@@ -515,7 +510,8 @@ const HeroForm: FC<ZohoForm2Props> = ({
           alt="Academic success illustration"
           width={400}
           className="cus-img absolute w-[400px] min-[1200px]:right-[-258px] -z-[1] max-[1025px]:hidden min-[1100px]:right-[-208px] min-[1150px]:right-[-150px]"
-          loading="lazy"
+          priority
+          fetchPriority="high"
         />
       )}
       <div className="w-full mx-auto cus-div">
