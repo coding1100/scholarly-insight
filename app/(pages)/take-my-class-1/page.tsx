@@ -32,8 +32,8 @@ async function fetchTakeMyClass1Data() {
 
     const { MongoClient } = await import('mongodb');
     const client = new MongoClient(databaseUrl, {
-      serverSelectionTimeoutMS: 5000,
-      connectTimeoutMS: 10000,
+      serverSelectionTimeoutMS: 3000,
+      connectTimeoutMS: 4000,
       // Force a new connection to avoid caching
       maxPoolSize: 1,
     });

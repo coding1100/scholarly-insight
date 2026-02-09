@@ -20,8 +20,8 @@ async function fetchEssayWritingData() {
 
     const { MongoClient } = await import("mongodb");
     const client = new MongoClient(databaseUrl, {
-      serverSelectionTimeoutMS: 5000,
-      connectTimeoutMS: 10000,
+      serverSelectionTimeoutMS: 3000,
+      connectTimeoutMS: 4000,
     });
 
     await client.connect();

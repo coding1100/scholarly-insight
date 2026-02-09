@@ -24,8 +24,8 @@ export async function GET(request: NextRequest) {
     }
 
     const client = new MongoClient(databaseUrl, {
-      serverSelectionTimeoutMS: 5000,
-      connectTimeoutMS: 10000,
+      serverSelectionTimeoutMS: 3000,
+      connectTimeoutMS: 4000,
     });
     await client.connect();
     const db = client.db('scholarly_help');
