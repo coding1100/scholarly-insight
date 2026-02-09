@@ -115,11 +115,13 @@ export default function CardCarousel() {
     const applySlickListStyle = () => {
       const root = carouselRootRef.current;
       if (!root) return;
-      const list = root.querySelector(".slick-list") as HTMLElement | null;
-      if (list) {
-        list.style.padding = "60px 0px 30px 0px";
-        list.style.overflowY = "visible";
-      }
+      requestAnimationFrame(() => {
+        const list = root.querySelector(".slick-list") as HTMLElement | null;
+        if (list) {
+          list.style.padding = "60px 0px 30px 0px";
+          list.style.overflowY = "visible";
+        }
+      });
     };
     applySlickListStyle();
     const t = setTimeout(applySlickListStyle, 0);
