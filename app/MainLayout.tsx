@@ -3,10 +3,7 @@ import { FC, ReactNode, useState, useCallback, useEffect } from "react"; // Adde
 import dynamic from "next/dynamic";
 import { usePathname } from "next/navigation";
 
-// Lazy load auth provider
-const AuthProvider = dynamic(() => import("./context/auth/AuthProvider"), {
-    ssr: false,
-});
+import AuthProvider from "./context/auth/AuthProvider";
 
 const AppNav = dynamic(() => import("./components/LandingPage/Header"), {
     ssr: false,
