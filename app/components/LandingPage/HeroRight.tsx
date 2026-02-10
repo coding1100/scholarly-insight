@@ -3,6 +3,8 @@
 import React, { FC } from "react";
 import Image, { StaticImageData } from "next/image";
 import HeroForm from "./HeroForm"; // Direct import for LCP - no dynamic loading
+import HeroForm2 from "./HeroForm2";
+import { usePathname } from "next/navigation";
 import Bg1 from "@/app/assets/Images/Hero-b-1.webp";
 import Bg2 from "@/app/assets/Images/Hero-b-2.webp";
 import Bg3 from "@/app/assets/Images/Hero-b-3.webp";
@@ -28,6 +30,9 @@ interface HeroRightProps {
   formBackImg2?: StaticImageData;
 }
 const HeroRight: FC<HeroRightProps> = ({ formBackImg2 }) => {
+  const pathname = usePathname();
+  const isTakeMyClass = pathname === "/take-my-class" || pathname === "/take-my-class/";
+
   return (
     <div className="flex w-full flex-col gap-6">
       <div className="relative flex items-start gap-6 z-[999]">
@@ -69,7 +74,11 @@ const HeroRight: FC<HeroRightProps> = ({ formBackImg2 }) => {
 
         {/* form sits above decorative layer */}
         <div className="relative z-[99] w-full">
-          <HeroForm formBackImg2={formBackImg2} />
+          {isTakeMyClass ? (
+            <HeroForm2 formBackImg2={formBackImg2} />
+          ) : (
+            <HeroForm formBackImg2={formBackImg2} />
+          )}
         </div>
 
         {/* right column: illustration + rating stacked; illustration sits slightly under the form */}
